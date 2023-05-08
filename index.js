@@ -1,13 +1,26 @@
 import express from "express";
-import * as dotenv from 'dotenv';
+import bodyParser from "body-parser";
+// Main App
+const app = express();
 
-dotenv.config({path: 'variables.env'});
+
+
+import * as dotenv from 'dotenv';
+// Development Variables
+dotenv.config({ path: 'variables.env' });
 
 import router from "./routes/index.js";
 import path from "path";
 import expressLayouts from "express-ejs-layouts";
 
-const app = express();
+// dbModels & Config
+import db from "./config/db.js";
+import users from './models/users.js';
+db.sync().then(() => console.log(" db connected ")).catch((error) => console.log(error));
+
+// Body parser
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
 
 // Static Files
 app.use(express.static('public'));

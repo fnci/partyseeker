@@ -15,7 +15,10 @@
     "nodemon": "^2.0.22"
   },
   "dependencies": {
+    "bcrypt": "^5.1.0",
     "ejs": "^3.1.9",
-    "express-ejs-layouts": "^2.5.1"
+    "express-ejs-layouts": "^2.5.1",
+    "pg": "^8.10.0",
+    "sequelize": "^6.31.1"
   }
 }

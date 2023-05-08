@@ -190,13 +190,14 @@ p {
     }
 }
 nav.nav a {
+    font-size: 1rem;
     padding: 1rem;
     display: inline-block;
 }
 nav.nav a:first-child {
-    color: #B8336A;
+    color: #ff1878;
     font-weight: 700;
-    border-right: 2px solid #ff0095;
+    border-right: 3px solid #10be00;
 }
 
 /** hero **/
@@ -265,7 +266,7 @@ form textarea{
     }
 }
 
-/** Categorias **/
+/** Categories **/
 main.categorias {
     background-color: #F2F2F2;
     padding: 2rem 0;
@@ -298,7 +299,7 @@ main.categorias {
 
 }
 
-/** Caracteristicas **/
+/** Characteristics **/
 .partyseeker-bg {
     background: linear-gradient(
         to bottom,
@@ -361,6 +362,9 @@ main.contenedor-formularios {
     display: flex;
     align-items: center;
     margin-bottom: 1rem;
+}
+.default-form .field input {
+    border-radius: 0.5rem;
 }
 .field.acciones {
     justify-content: space-between;

@@ -1,6 +1,6 @@
 <main class="container contenedor-formularios">
      <h1><%-pageTitle%></h1>
-     <form class="default-form" action="/create-account" method="POST">
+     <form class="default-form" action="/signup" method="POST">
         <div class="field">
             <label for="e-mail">E-mail</label>
             <input type="email" name="email" id="e-mail" placeholder="Your Email">
@@ -11,15 +11,15 @@
         </div>
         <div class="field">
             <label for="lastname">Last name</label>
-            <input type="text" name="username" id="lastname" placeholder="Last name">
+            <input type="text" name="lastname" id="lastname" placeholder="Last name">
         </div>
         <div class="field">
             <label for="password">Password</label>
-            <input type="password" name="user-password" id="password" placeholder="Password">
+            <input type="password" name="password" id="password" placeholder="Password">
         </div>
         <div class="field">
             <label for="password-co">Confirm Password</label>
-            <input type="password" name="user-password-co" id="password-co" placeholder="Confirm">
+            <input type="password" name="password-co" id="password-co" placeholder="Confirm">
         </div>
         <div class="field enviar">
             <input type="submit" class="btn btn-rose" value="Create Account">
