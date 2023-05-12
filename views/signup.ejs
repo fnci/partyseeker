@@ -1,25 +1,21 @@
-<main class="container contenedor-formularios">
+<main class="container container-forms">
      <h1><%-pageTitle%></h1>
-     <form class="default-form" action="/signup" method="POST">
+     <form class="default-form" action="/signup" method="POST" noValidate>
         <div class="field">
             <label for="e-mail">E-mail</label>
             <input type="email" name="email" id="e-mail" placeholder="Your Email">
         </div>
         <div class="field">
-            <label for="firstname">First name</label>
-            <input type="text" name="username" id="firstname" placeholder="First name">
-        </div>
-        <div class="field">
-            <label for="lastname">Last name</label>
-            <input type="text" name="lastname" id="lastname" placeholder="Last name">
+            <label for="name">Username</label>
+            <input type="text" name="name" id="name" placeholder="Username">
         </div>
         <div class="field">
             <label for="password">Password</label>
             <input type="password" name="password" id="password" placeholder="Password">
         </div>
         <div class="field">
-            <label for="password-co">Confirm Password</label>
-            <input type="password" name="password-co" id="password-co" placeholder="Confirm">
+            <label for="confirmPassword">Confirm Password</label>
+            <input type="password" name="confirmPassword" id="confirmPassword" placeholder="Confirm">
         </div>
         <div class="field enviar">
             <input type="submit" class="btn btn-rose" value="Create Account">

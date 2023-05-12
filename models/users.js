@@ -1,7 +1,6 @@
 import { DataTypes } from 'sequelize';
 import db from "../config/db.js";
-import bcrypt from 'bcrypt'
-
+import bcrypt from 'bcrypt';
 
 const Users = db.define('users', {
     id: {
@@ -9,11 +8,18 @@ const Users = db.define('users', {
         primaryKey: true,
         autoIncrement: true
     },
-    name: DataTypes.STRING(60),
-    image: DataTypes.STRING(60),
+    name: {
+        type: DataTypes.STRING,
+        allowNull: false,
+        validate: {
+            notEmpty: {
+                msg: 'Name is required.'
+            }
+        }
+    },
+    image: DataTypes.STRING,
     email: {
         type: DataTypes.STRING(30),
-        // email required
         allowNull: false,
         validate: {
             isEmail: { msg: 'Please enter a valid email address' }
@@ -24,12 +30,30 @@ const Users = db.define('users', {
         }
     },
     password: {
-        type: DataTypes.STRING(60),
+        type: DataTypes.STRING,
         allowNull: false,
         validate: {
+            notNull: {
+                msg: 'A password is required'
+            },
             notEmpty: {
                 msg: 'Password must not be empty'
+            },
+            len: {
+                args: [8],
+                msg: 'The Password must have at least 8 characters'
             }
+        }
+    },
+    confirmPassword: {
+        type: DataTypes.VIRTUAL,
+        allowNull: false,
+        validate: {
+            confirmPassword(value){
+            if(value !== this.password){
+                throw new Error('The Password confirmation is invalid');
+            }
+           }
         }
     },
     active: {
@@ -37,7 +61,7 @@ const Users = db.define('users', {
         defaultValue: 0
     },
     tokenPassword: DataTypes.STRING,
-    expireToken: DataTypes.DATE()
+    expireToken: DataTypes.DATE
 
 }, {
     hooks: {

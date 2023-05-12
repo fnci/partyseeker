@@ -13,23 +13,35 @@
 </head>
 <body>
     <header class="container site-header">
-        <a href="/">
-            <img class="header-logo" src="/img/PartySeeker-1.png" alt="Logo PartySeeker">
+        <a  class="header-logo" href="/">
+            <img src="/img/PartySeeker.png" alt="Logo PartySeeker">
         </a>
 
         <nav class="nav">
-            <a href="#">Make Group</a>
-            <a href="#">Log In</a>
-            <a href="/signup">Sign Up</a>
+            <a href="#">MakeGroup</a>
+            <a href="/login">LogIn</a>
+            <a href="/signup">SignUp</a>
         </nav>
     </header>
+    <% if(locals.messages){ %>
+        <% const category = Object.keys(locals.messages) %>
+        <% if(category.length){  %>
+            <% locals.messages[category].forEach(alert => { %>
+                <div class="alerts">
+                    <p class="alert <%= category %>"><%= alert %></p>
+                </div>
+            <% }) %>
+        <% } %>
+    <% } %>
+
+
     <%-body%>
     <footer class="container site-footer">
         <img class="ps-logo" src="/img/PartySeekerBlue.png" alt="Copyright Logo">
         <nav class="nav">
-            <a href="#">Make Group</a>
-            <a href="#">Log In</a>
-            <a href="/signup">Sign Up</a>
+            <a href="#">MakeGroup</a>
+            <a href="/login">LogIn</a>
+            <a href="/signup">SignUp</a>
             <p class="copyright">All rights reserved. PartySeeker <%- year %> &copy;</p>
         </nav>
     </footer>
