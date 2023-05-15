@@ -4,6 +4,7 @@ const router = express.Router();
 
 import home from '../controllers/homeController.js';
 import { signupForm, createNewAccount, loginForm, confirmAccount} from '../controllers/userController.js';
+import authController from '../controllers/authController.js';
 
 const routes = () => {
 
@@ -13,8 +14,9 @@ const routes = () => {
     router.get('/signup', signupForm);
     router.post('/signup', createNewAccount);
     router.get('/account-confirmation/:email', confirmAccount);
-
+    // Log in
     router.get('/login', loginForm);
+    router.post('/login', authController);
 
     /* router.get('/login', loginForm); */
 /*     router.get('/', (req, res) => {

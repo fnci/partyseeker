@@ -3,7 +3,7 @@ import bodyParser from "body-parser";
 import flash from "connect-flash";
 import session from "express-session";
 import cookieParser from "cookie-parser";
-
+import passport from "./config/passport.js";
 import router from "./routes/index.js";
 import path from "path";
 import expressLayouts from "express-ejs-layouts";
@@ -18,7 +18,7 @@ dotenv.config({ path: 'variables.env' });
 
 // dbModels & Config
 import db from "./config/db.js";
-import users from './models/users.js';
+/* import users from './models/users.js'; */
 db.sync().then(() => console.log("DB Connected")).catch((error) => console.log(error));
 
 // Body parser
@@ -48,6 +48,10 @@ app.use(session({
     resave: false,
     saveUninitialized: false
 }))
+
+// Init passport
+app.use(passport.initialize());
+app.use(passport.session());
 
 // Add flash messages
 app.use(flash());
