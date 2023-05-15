@@ -6,4 +6,6 @@ const authController = passport.authenticate('local', {
     badRequestMessage: 'Both fields are required',
 })
 
+
+
 export default authController;

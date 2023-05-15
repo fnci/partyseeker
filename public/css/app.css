@@ -5,7 +5,7 @@ html {
     box-sizing: inherit;
 }
 body {
-    font-family: 'Fraunces', serif;
+    font-family: 'Mogra', cursive;
     background: #b2fefa; /* fallback for old browsers */
     background: -webkit-linear-gradient(to bottom, #ffffff, #0ed2f7); /* Chrome 10-25, Safari 5.1-6 */
     background: linear-gradient(to bottom, #ffffff, #0ed2f7);
@@ -25,8 +25,9 @@ h2 {
 }
 h3 {
     text-align: left;
-    font-family: 'Fraunces', serif;
+    font-family: 'Poltawski Nowy', serif;
     font-size: 2rem;
+    font-weight: 700;
 }
 a {
     text-decoration: none;
@@ -43,6 +44,7 @@ ul {
     list-style: none;padding: 0;
 }
 p {
+    font-family: 'Poltawski Nowy', serif;
     line-height: 2;
 }
 /*** COMPONENTES **/
@@ -71,12 +73,13 @@ p {
 .btn {
     padding: 1rem 4rem;
     text-align: center;
-    font-weight: 700;
+    font-family: 'Poltawski Nowy', serif;
+    font-weight: 400;
     font-size: 1.3rem;
     border: none;
     border-radius: 0.5rem;
     background-color: transparent;
-    color:white;
+    color:rgb(0, 0, 0);
     width: 100%;
     display: block;
     flex : 0 0 100%;
@@ -92,25 +95,29 @@ p {
     cursor: pointer;
 }
 .btn-yellow {
-    background-color: #d8ca0d;
+    background-color: #ffee00;
 }
-.btn-rose {
-    background-color: #f04c90;
+.btn-pink {
+    background-color: #ff48c2;
+}
+.btn-cyan {
+    background-color: cyan;
 }
 .btn-blue {
-    background-color: #008deb;
+    background-color: #132bff;
+    color: #ffffff;
 }
 .btn-orange {
-    background-color: #e65326;
+    background-color: #ff6434;
 }
 .btn-green {
-    background-color: #20a51b;
+    background-color: #07e000;
 }
-.btn-blue2 {
-    background-color: #218ba5;
+.btn-purple {
+    background-color: #963aff;
 }
 .btn-red {
-    background-color: #a50b00;
+    background-color: #ff3a2c;
 }
 
 /** Grid **/
@@ -147,7 +154,7 @@ p {
     font-size: 1.8rem;
     margin: .6rem 0;
     padding: .5rem 0;
-    font-family: 'Fraunces', serif;
+    font-family: 'Poltawski Nowy', serif;
     font-weight: 700;
     color: #484349;
 }
@@ -448,7 +455,7 @@ trix-toolbar .trix-button--icon-strike {
 }
 
 /** Administración **/
-.panel-administracion {
+.administration-panel {
     padding: 4rem 0;
 }
 .container-buttons {
@@ -481,7 +488,7 @@ trix-toolbar .trix-button--icon-strike {
 }
 .section-admin li {
     padding: 1rem 0;
-    border-bottom:  1px solid #E6E6E6;
+    border-bottom:  3px solid #E6E6E6;
 }
 
 .section-admin li:last-of-type{
@@ -504,6 +511,7 @@ trix-toolbar .trix-button--icon-strike {
     margin-right: 2rem;
 }
 .info-admin small {
+    font-family: 'Poltawski Nowy', serif;
     font-weight: 700;
     font-size: .8rem;
 }
@@ -527,7 +535,7 @@ trix-toolbar .trix-button--icon-strike {
     }
 }
 .resumen-event h1 {
-    font-family: 'Fraunces', serif;
+    font-family: 'Poltawski Nowy', serif;
     text-align: left;
     font-size: 2rem;
 }
