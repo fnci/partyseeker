@@ -1,12 +1,12 @@
 import express from 'express';
 const router = express.Router();
-
-
 import home from '../controllers/homeController.js';
 import { signupForm, createNewAccount, loginForm, confirmAccount} from '../controllers/userController.js';
 import authController from '../controllers/authController.js';
+import {groupController, createGroup} from '../controllers/groupController.js';
 import adminPanel from '../controllers/adminController.js';
 import authUser from '../controllers/authUser.js';
+
 
 const routes = () => {
 
@@ -26,20 +26,14 @@ const routes = () => {
     authUser,
     adminPanel);
 
-    /* router.get('/login', loginForm); */
-/*     router.get('/', (req, res) => {
-        res.render('home', {
-            pageTitle: 'Home Page'
-        })
-    }); */
-/*     router.get('/signup', (req, res) => {
-        res.render('signup', {
-            pageTitle: 'Sign Up',
-        })
-    }); */
+    // New Group
+    router.get('/newgroup',
+    authUser,
+    groupController);
 
-
-
+    router.post('/newgroup',
+    createGroup,
+    groupController);
 
     return router;
 }

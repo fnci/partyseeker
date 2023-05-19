@@ -14,7 +14,7 @@ const Users = db.define('users', {
         validate: {
             notEmpty: {
                 msg: 'Name is required.'
-            }
+            },
         }
     },
     image: DataTypes.STRING,
@@ -26,7 +26,7 @@ const Users = db.define('users', {
         },
         unique: {
             args: true,
-            msg: 'Username already in use'
+            msg: 'Email address already in use'
         }
     },
     password: {
@@ -76,4 +76,4 @@ Users.prototype.validatePassword = function(password) {
     return bcrypt.compareSync(password, this.password);
 }
 
-export default Users;
+export default Users

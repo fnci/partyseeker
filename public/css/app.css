@@ -47,7 +47,14 @@ p {
     font-family: 'Poltawski Nowy', serif;
     line-height: 2;
 }
-/*** COMPONENTES **/
+input {
+    font-family: 'Comme', sans-serif;
+}
+select {
+    font-family: 'Comme', sans-serif;
+}
+
+/* COMPONENTS */
 .alerts {
     max-width: 42rem;
     width: 100%;
@@ -63,10 +70,15 @@ p {
     border-radius: 0.5rem;
 }
 .error {
-    background-color: #d8190c;
+    background-color: #ff4c3f;
+    font-family: 'Comme', sans-serif;
+    font-size: 1.2rem;
 }
 .success {
-    background-color: rgb(119, 197, 3);
+    background-color: rgb(209, 255, 3);
+    color:rgb(0, 0, 0);
+    font-family: 'Comme', sans-serif;
+    font-size: 1.2rem;
 }
 
 /** buttons **/
@@ -91,6 +103,7 @@ p {
         flex: 0 0 auto;
     }
 }
+
 .btn:hover {
     cursor: pointer;
 }
@@ -203,7 +216,7 @@ p {
     }
 }
 nav.nav a {
-    font-size: 1rem;
+    font-size: 1.2rem;
     padding: 1rem;
     display: inline-block;
 }
@@ -362,7 +375,7 @@ a.header-logo {
 }
 
 /** Crear Cuenta **/
-main.container-forms {
+main.forms-container {
     max-width: 900px;
     width:95%;
     padding: 3rem 0;
@@ -373,9 +386,11 @@ main.container-forms {
 
 .default-form .field {
     display: flex;
-    align-items: center;
+    align-items: baseline;
     margin-bottom: 1rem;
+    /* justify-content: flex-end; */
 }
+
 .default-form .field input {
     border-radius: 0.5rem;
 }
@@ -383,12 +398,13 @@ main.container-forms {
     justify-content: space-between;
     padding: 1rem 0;
 }
-.field.enviar {
+.field.send {
     justify-content: flex-end;
     padding-top: 2rem;
 }
 .default-form .field label {
     flex: 0 0 120px;
+    font-size: 1.2rem;
 }
 .default-form .field input[type="text"],
 .default-form .field input[type="password"],
@@ -401,6 +417,7 @@ main.container-forms {
 .default-form .field select{
     margin: 0;
     flex: 1;
+    border-radius: 0.5rem;
 }
 .default-form legend {
     color: #068D9D;
@@ -408,7 +425,7 @@ main.container-forms {
     font-weight: 700;
     margin: 2.5rem 0;
 }
-.default-form.comentarios .field {
+.default-form.comments .field {
     align-items: flex-start;
 }
 .default-form .field textarea {
@@ -425,7 +442,7 @@ trix-editor  {
 trix-editor h1 {
     text-align: left!important;
 }
-.field.descripcion label {
+.field.description label {
     display: block;
     margin-bottom: 2rem;
     align-self: flex-start;
@@ -442,6 +459,8 @@ trix-editor {
     font-size: 1.2rem;
     min-height: 20rem!important;
     padding: 2rem;
+    border-bottom-left-radius: 0.5rem;
+    border-bottom-right-radius: 0.5rem;
 }
 trix-editor h1,
 trix-editor blockquote {
@@ -534,31 +553,31 @@ trix-toolbar .trix-button--icon-strike {
         justify-content: space-between;
     }
 }
-.resumen-event h1 {
+.event-summary h1 {
     font-family: 'Poltawski Nowy', serif;
     text-align: left;
     font-size: 2rem;
 }
 /** Asistencia **/
-.pregunta-asistencia {
+.attendance-question {
     display: flex;
     flex-direction: column;
     justify-content: center;
 }
-.pregunta-asistencia p {
+.attendance-question p {
     font-size: 2rem;
     font-weight: 700;
     margin: 0;
     text-align: center;
 }
-.opciones-asistencia {
+.attendance-options {
     display: flex;
     justify-content: space-between;
 }
-.opciones-asistencia a{
+.attendance-options a{
     flex: 1;
 }
-.opciones-asistencia a:first-of-type{
+.attendance-options a:first-of-type{
     margin-right: 2rem;
 }
 .content-event {
@@ -580,45 +599,45 @@ trix-toolbar .trix-button--icon-strike {
 }
 
 /** Asistentes **/
-.asistentes .titulo {
+.assistants .title {
     display: flex;
     justify-content: space-between;
     align-items: center;
 }
-.asistentes .titulo a {
+.assistants .title a {
     color: #068D9D;
     font-weight: 700;
     font-size: 1.4rem;
 }
-.lista-asistentes {
+.list-assistants {
     display: flex;
     justify-content: space-between;
 
 }
-.lista-asistentes li {
+.list-assistants li {
     flex: 0 0 calc(33.3% - 1rem);
     height: 200px;
     background-color: white;
     border: 1px solid #C7C7C7;
 }
 
-.comentario {
+.comment {
     display: flex;
     margin-bottom: 2rem;
 }
-.comentario .image {
+.comment .image {
     flex: 0 0 80px;
     height: 80px;
     background-color: #333;
     border-radius: 50%;
     margin-right: 2rem;
 }
-.comentario .text {
+.comment .text {
     padding: 2rem;
     border: 1px solid #C7C7C7;
     background-color: white;
 }
-.comentario .text p {
+.comment .text p {
     margin: 0;
 }
 
@@ -648,4 +667,19 @@ aside .location {
 }
 aside img {
     display: block;
+}
+
+trix-toolbar {
+    padding: 1rem;
+    border-top-left-radius: 0.5rem;
+    border-top-right-radius: 0.5rem;
+}
+
+::-webkit-file-upload-button {
+    -webkit-appearance: button;
+    font-family: 'Comme', sans-serif;
+    width: 50%;
+    height: 2.5rem;
+    border-radius: 0.5rem;
+    border: 1px solid #A8A6A8;
 }

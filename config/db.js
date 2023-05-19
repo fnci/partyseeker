@@ -18,5 +18,4 @@ const db = new Sequelize('partyseeker', 'postgres', '1117', {
 });
 
 
-
-export default db;
+export default db

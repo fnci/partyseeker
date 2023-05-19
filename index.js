@@ -15,11 +15,15 @@ const app = express();
 // Development Variables
 dotenv.config({ path: 'variables.env' });
 
-
 // dbModels & Config
 import db from "./config/db.js";
-/* import users from './models/users.js'; */
 db.sync().then(() => console.log("DB Connected")).catch((error) => console.log(error));
+import Groups from './models/groups.js';
+await Groups.sync();
+import Users from './models/users.js';
+await Users.sync();
+import Categories from "./models/categories.js";
+await Categories.sync();
 
 // Body parser
 app.use(bodyParser.json());
