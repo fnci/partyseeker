@@ -1,7 +1,7 @@
 import Categories from '../models/categories.js';
 import Groups from '../models/groups.js';
 import multer from 'multer';
-import shortid from 'shortid';
+import { nanoid } from 'nanoid'
 import { dirname } from 'path';
 import { fileURLToPath } from 'url';
 const __dirname = dirname(fileURLToPath(import.meta.url));
@@ -15,7 +15,7 @@ const multerConfig = {
         },
         filename: (req, file, next) => {
             const extension = file.mimetype.split('/')[1];
-            next(null, `${shortid.generate()}.${extension}`);
+            next(null, `${nanoid(10)}.${extension}`);
         }
     }),
     fileFilter(req, file, next) {
@@ -63,7 +63,7 @@ const createGroup = async(req, res) => {
 
     const group = req.body;
     // Store the authenticate user creator of the group
-    group.userId = req.user.id;
+    group.userId = req.user?.id;
 
     group.image = req.file?.filename;
 
