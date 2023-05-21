@@ -7,13 +7,13 @@ import passport from "./config/passport.js";
 import router from "./routes/index.js";
 import path from "path";
 import expressLayouts from "express-ejs-layouts";
-import * as dotenv from 'dotenv';
+import dotenv from 'dotenv';
 
 // Main App
 const app = express();
 
 // Development Variables
-dotenv.config({ path: 'variables.env' });
+dotenv.config({ path: '.env' });
 
 // dbModels & Config
 import db from "./config/db.js";

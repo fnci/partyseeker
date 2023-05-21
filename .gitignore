@@ -3,7 +3,8 @@
 
 # does not ignore the README.md file
 !README.md
-
+# variables credentials
+*.env
 # Dependency directories
 node_modules
 node_modules/

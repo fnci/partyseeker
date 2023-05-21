@@ -1,15 +1,15 @@
 import { DataTypes } from 'sequelize';
 import db from "../config/db.js";
-import { v4 as uuidv4 } from 'uuid';
+/* import { v4 as uuidv4 } from 'uuid'; */
 import Categories from './categories.js';
 import Users from './users.js';
 
 const Groups = db.define('groups', {
     id: {
-        type: DataTypes.UUID,
-        primaryKey: true,
         allowNull: false,
-        defaultValue: uuidv4()
+        primaryKey: true,
+        type: DataTypes.UUID,
+        defaultValue: DataTypes.UUIDV4
     },
     name: {
         type: DataTypes.TEXT(100),

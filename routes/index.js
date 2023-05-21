@@ -1,41 +1,42 @@
-import express from 'express';
+import express from "express";
 const router = express.Router();
-import home from '../controllers/homeController.js';
-import { signupForm, createNewAccount, loginForm, confirmAccount} from '../controllers/userController.js';
-import authController from '../controllers/authController.js';
-import {groupController, createGroup} from '../controllers/groupController.js';
-import adminPanel from '../controllers/adminController.js';
-import authUser from '../controllers/authUser.js';
-
+import home from "../controllers/homeController.js";
+import {
+  signupForm,
+  createNewAccount,
+  loginForm,
+  confirmAccount,
+} from "../controllers/userController.js";
+import authController from "../controllers/authController.js";
+import {
+  groupController,
+  createGroup,
+  uploadImage
+} from "../controllers/groupController.js";
+import adminPanel from "../controllers/adminController.js";
+import authUser from "../controllers/authUser.js";
 
 const routes = () => {
+  router.get("/", home);
 
-    router.get('/', home);
+  // Create and confirm account
+  router.get("/signup", signupForm);
+  router.post("/signup", createNewAccount);
+  router.get("/account-confirmation/:email", confirmAccount);
 
-    // Create and confirm account
-    router.get('/signup', signupForm);
-    router.post('/signup', createNewAccount);
-    router.get('/account-confirmation/:email', confirmAccount);
+  // Log in
+  router.get("/login", loginForm);
+  router.post("/login", authController);
 
-    // Log in
-    router.get('/login', loginForm);
-    router.post('/login', authController);
+  // Administration panel
+  router.get("/admin", authUser, adminPanel);
 
-    // Administration panel
-    router.get('/admin',
-    authUser,
-    adminPanel);
+  // New Group
+  router.get("/newgroup", authUser, groupController);
 
-    // New Group
-    router.get('/newgroup',
-    authUser,
-    groupController);
+  router.post("/newgroup", uploadImage, createGroup, groupController);
 
-    router.post('/newgroup',
-    createGroup,
-    groupController);
-
-    return router;
-}
+  return router;
+};
 
 export default routes;
