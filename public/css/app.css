@@ -48,7 +48,7 @@ p {
     line-height: 2;
 }
 input {
-    font-family: 'Comme', sans-serif;
+    font-family: 'Poltawski Nowy', serif;
 }
 select {
     font-family: 'Comme', sans-serif;
@@ -132,6 +132,16 @@ select {
 }
 .btn-red {
     background-color: #ff3a2c;
+}
+
+.btn-delete {
+    background-color: #ffffff;
+    color: #000000;
+    border: 3px solid rgb(201, 0, 0);
+}
+.btn-delete:hover {
+    background: red;
+    color: white;
 }
 
 /** Grid **/
@@ -407,6 +417,9 @@ main.forms-container {
     flex: 0 0 120px;
     font-size: 1.2rem;
 }
+.field .img-label {
+    margin-bottom: auto;
+}
 .default-form .field input[type="text"],
 .default-form .field input[type="password"],
 .default-form .field input[type="email"],
@@ -421,10 +434,11 @@ main.forms-container {
     border-radius: 0.5rem;
 }
 .default-form legend {
-    color: #068D9D;
+    color: #000000;
     font-size: 1.6rem;
     font-weight: 700;
-    margin: 2.5rem 0;
+    font-family: 'Poltawski Nowy', serif;
+    margin: 4rem auto 4rem auto;
 }
 .default-form.comments .field {
     align-items: flex-start;
@@ -436,6 +450,8 @@ main.forms-container {
     flex: 1;
     display: flex;
     flex-direction: column;
+    font-family: 'Poltawski Nowy', serif;
+
 }
 trix-editor  {
     display: block;
@@ -465,6 +481,7 @@ trix-editor {
 }
 trix-editor h1,
 trix-editor blockquote {
+    font-family: 'Poltawski Nowy', serif;
     color: black;
 }
 trix-toolbar .trix-button-group {
@@ -683,4 +700,13 @@ trix-toolbar {
     height: 2.5rem;
     border-radius: 0.5rem;
     border: 1px solid #A8A6A8;
+}
+
+.groups-p {
+    text-align: center;
+    font-size: 1.5rem;
+}
+.delete-group {
+    display: flex;
+    justify-content: space-around
 }

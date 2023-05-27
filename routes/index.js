@@ -11,7 +11,13 @@ import authController from "../controllers/authController.js";
 import {
   groupController,
   createGroup,
-  uploadImage
+  uploadImage,
+  groupEditForm,
+  editGroup,
+  editGroupImage,
+  editImage,
+  groupDeleteForm,
+  deleteGroup
 } from "../controllers/groupController.js";
 import adminPanel from "../controllers/adminController.js";
 import authUser from "../controllers/authUser.js";
@@ -33,8 +39,19 @@ const routes = () => {
 
   // New Group
   router.get("/newgroup", authUser, groupController);
+  router.post("/newgroup", authUser, uploadImage, createGroup, groupController);
 
-  router.post("/newgroup", uploadImage, createGroup, groupController);
+  // Edit Groups
+  router.get("/edit-group/:groupId", authUser, groupEditForm);
+  router.post("/edit-group/:groupId", authUser, editGroup);
+  // Edit the image of the group
+  router.get("/group-image/:groupId", authUser, editGroupImage);
+  router.post("/group-image/:groupId", authUser, uploadImage, editImage);
+  // Delete Groups
+  router.get("/delete-group/:groupId", authUser, groupDeleteForm);
+  router.post("/delete-group/:groupId", authUser, deleteGroup);
+
+
 
   return router;
 };

@@ -50,27 +50,24 @@
     </div>
     <div class="section-admin">
         <h2>Your Groups</h2>
+        <% if(groups.length){ %>
         <ul>
-            <li>
-                <div class="info-admin">
-                    <h3>NetNerds San Francisco </h3>
-                </div>
-                <div class="actions container-buttons">
-                    <a href="#" class="btn btn-purple">Edit</a>
-                    <a href="#" class="btn btn-orange">Picture</a>
-                    <a href="#" class="btn btn-red">Delete</a>
-                </div>
-            </li>
-            <li>
-                <div class="info-admin">
-                    <h3>Developers California</h3>
-                </div>
-                <div class="actions container-buttons">
-                    <a href="#" class="btn btn-purple">Edit</a>
-                    <a href="#" class="btn btn-orange">Picture</a>
-                    <a href="#" class="btn btn-red">Delete</a>
-                </div>
-            </li>
+            <% groups.forEach(group => { %>
+
+                <li>
+                    <div class="info-admin">
+                        <h3><%= group.name %></h3>
+                    </div>
+                    <div class="actions container-buttons">
+                        <a href="/edit-group/<%= group.id %>" class="btn btn-purple">Edit</a>
+                        <a href="/group-image/<%= group.id %>" class="btn btn-orange">Picture</a>
+                        <a href="/delete-group/<%= group.id %>" class="btn btn-red">Delete</a>
+                    </div>
+                </li>
+            <% }); %>
         </ul>
+        <% } else  { %>
+            <p class="groups-p">You haven't created groups yet.</p>
+        <% } %>
     </div>
 </main>
