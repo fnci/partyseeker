@@ -1,0 +1,81 @@
+<main class="container forms-container">
+    <h1><%- pageTitle %></h1>
+    <form class="default-form" action="/new-party" method="POST">
+        <legend>About the party</legend>
+        <div class="field">
+            <label>Group</label>
+            <select name="groupId">
+                <option value="" disabled selected>-- Select Group --</option>
+                <% if(groups.length > 0){ %>
+                    <% groups.forEach(group => { %>
+                        <option value="<%= group.id %>"><%= group.name %></option>
+                    <% }) %>
+                <% } %>
+            </select>
+        </div>
+        <div class="field">
+            <label>Title</label>
+            <input type="text" name="title" placeholder="Party Title">
+        </div>
+        <div class="field">
+            <label>Guest</label>
+            <input type="text" name="guest" placeholder="Guest Name">
+        </div>
+        <div class="columns-2 grid">
+            <div class="field">
+                <label>Date</label>
+                <input type="date" name="date" placeholder="Party date">
+            </div>
+            <div class="field">
+                <label>Hour</label>
+                <input type="time" name="hour" placeholder="Party time">
+            </div>
+        </div>
+        <div class="field">
+            <label>Attendance</label>
+            <input type="number" min="1" name="attendance" placeholder="Maximum guests allowed">
+        </div>
+        <div class="field description">
+            <label>Description</label>
+            <div class="container-editor">
+                <input type="hidden" id="x" name="description">
+                <trix-editor input="x"></trix-editor>
+            </div>
+        </div>
+
+        <legend>Party Location</legend>
+
+        <div class="field">
+            <label>Party Location</label>
+            <input type="text" id="seeker-input" placeholder="Location">
+        </div>
+
+        <div class="container map">
+            <div id="map"></div>
+            <p class="information">Place the marker at the location of the party if necessary.</p>
+        </div>
+
+        <p class="information">Confirm that the following fields are correct:</p>
+        <div class="field">
+            <label>Address</label>
+            <input type="text" id="address" name="address" placeholder="Address">
+        </div>
+        <div class="field">
+            <label>City</label>
+            <input type="text" id="city" name="city" placeholder="City">
+        </div>
+        <div class="field">
+            <label>State</label>
+            <input type="text" id="state" name="state" placeholder="State">
+        </div>
+        <div class="field">
+            <label>Country</label>
+            <input type="text" id="country" name="country" placeholder="Country">
+        </div>
+            <input type="hidden" id="lat" name="lat">
+            <input type="hidden" id="lng" name="lng">
+        <div class="field send">
+            <input type="#" class="btn btn-green" value="New Party">
+        </div>
+    </form>
+</main>

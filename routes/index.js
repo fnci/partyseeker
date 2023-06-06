@@ -9,6 +9,9 @@ import {
 } from "../controllers/userController.js";
 import authController from "../controllers/authController.js";
 import {
+  partyController
+} from "../controllers/partyController.js"
+import {
   groupController,
   createGroup,
   uploadImage,
@@ -38,8 +41,8 @@ const routes = () => {
   router.get("/admin", authUser, adminPanel);
 
   // New Group
-  router.get("/newgroup", authUser, groupController);
-  router.post("/newgroup", authUser, uploadImage, createGroup, groupController);
+  router.get("/new-group", authUser, groupController);
+  router.post("/new-group", authUser, uploadImage, createGroup, groupController);
 
   // Edit Groups
   router.get("/edit-group/:groupId", authUser, groupEditForm);
@@ -51,7 +54,9 @@ const routes = () => {
   router.get("/delete-group/:groupId", authUser, groupDeleteForm);
   router.post("/delete-group/:groupId", authUser, deleteGroup);
 
-
+  // New Party
+  router.get("/new-party", authUser, partyController);
+  router.post("/new-party", authUser, uploadImage, createGroup, groupController);
 
   return router;
 };

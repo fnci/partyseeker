@@ -78,6 +78,7 @@ app.use((req, res, next) => {
 app.use('/', router());
 
 // Add port
-app.listen(process.env.PORT, () => {
+const port = process.env.PORT || 6000;
+app.listen(port, () => {
     console.log('listening on port')
 });

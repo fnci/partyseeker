@@ -53,7 +53,7 @@ const uploadImage = (req, res, next) => {
 const groupController = async (req, res) => {
     const categories = await Categories.findAll();
 
-    res.render('newgroup', {
+    res.render('new-group', {
         pageTitle: 'New Group',
         categories
     })
@@ -77,7 +77,7 @@ const createGroup = async(req, res) => {
     } catch (error) {
         const sequelizeError = error.errors?.map(err => err.message);
         req.flash('error', sequelizeError);
-        res.redirect('/newgroup');
+        res.redirect('/new-group');
     }
 }
 // Edit group
