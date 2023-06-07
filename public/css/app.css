@@ -390,32 +390,49 @@ a.header-logo {
 main.forms-container {
     max-width: 900px;
     width:95%;
-    padding: 3rem 0;
 }
 @media (max-width:768px) {
+    h1 {
+        font-size: 1.8rem;
+    }
     main.forms-container {
-        width:90%;
-        display: flex;
         flex-wrap: wrap;
         flex-direction: column;
         align-items: center;
     }
-
+    .field.description label {
+        display: block;
+        align-self: flex-start;
+        padding-top: 0.5rem;
+    }
 }
 .no-padding {
     padding: 0!important;
 }
-
+.img-btn{
+    padding: 1rem 0;
+}
+.img-btn label{
+    font-size: 1.2rem;
+    margin-right: 1rem;
+}
+/* .img-btn{
+    display: flex;
+    align-items: center;
+    padding: 0.5rem 0;
+} */
 .default-form .field {
     display: flex;
     align-items: baseline;
     margin-bottom: 1rem;
-    /* justify-content: flex-end; */
+    flex-wrap: wrap;
+    justify-content: space-around;
 }
 
 .default-form .field input {
     border-radius: 0.5rem;
 }
+
 .field.actions {
     justify-content: space-between;
     padding: 1rem 0;
@@ -424,7 +441,7 @@ main.forms-container {
     justify-content: flex-end;
 }
 .default-form .field label {
-    flex: 0 0 120px;
+    flex: 0 950px;
     font-size: 1.2rem;
 }
 .field .img-label {
@@ -471,9 +488,8 @@ trix-editor h1 {
 }
 .field.description label {
     display: block;
-    margin-bottom: 2rem;
+    /* margin-bottom: 2rem; */
     align-self: flex-start;
-    padding-top: 4rem;
 }
 trix-toolbar,
 trix-editor {
@@ -723,3 +739,6 @@ trix-toolbar {
 
 #map { height: 300px; border-radius: 0.5rem; }
 #seeker-input{}
+.information {
+    text-align: center;
+}
