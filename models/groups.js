@@ -41,4 +41,4 @@ Groups.belongsTo(Categories);
 Groups.belongsTo(Users);
 
 
-export default Groups
+export default Groups;

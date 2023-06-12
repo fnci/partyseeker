@@ -13,4 +13,4 @@ const Categories = db.define('categories', {
 
 
 
-export default Categories
+export default Categories;

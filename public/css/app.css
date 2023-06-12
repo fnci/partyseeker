@@ -70,7 +70,7 @@ select {
     border-radius: 0.5rem;
 }
 .error {
-    background-color: #d10e00;
+    background-color: #c73a3a;
     font-family: 'Comme', sans-serif;
     font-weight: 400;
     font-size: 1.2rem;
@@ -463,9 +463,9 @@ main.forms-container {
 .default-form legend {
     color: #2e2e2e;
     font-size: 1.6rem;
-    font-weight: 700;
+    font-weight: 500;
     font-family: 'Comme', sans-serif;
-    margin: 2rem auto 2rem auto;
+    margin: 2rem auto 1rem auto;
 }
 .default-form.comments .field {
     align-items: flex-start;
@@ -741,4 +741,5 @@ trix-toolbar {
 #seeker-input{}
 .information {
     text-align: center;
+    font-size: 1rem;
 }

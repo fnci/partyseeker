@@ -76,4 +76,4 @@ Users.prototype.validatePassword = function(password) {
     return bcrypt.compareSync(password, this.password);
 }
 
-export default Users
+export default Users;

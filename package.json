@@ -38,7 +38,8 @@
     "passport": "^0.6.0",
     "passport-local": "^1.0.0",
     "pg": "^8.10.0",
-    "sequelize": "^6.31.1",
+    "sequelize": "^6.32.0",
+    "slug": "^8.2.2",
     "trix": "^2.0.4"
   }
 }

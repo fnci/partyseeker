@@ -9,7 +9,8 @@ import {
 } from "../controllers/userController.js";
 import authController from "../controllers/authController.js";
 import {
-  partyController
+  partyController,
+  createParty
 } from "../controllers/partyController.js"
 import {
   groupController,
@@ -56,7 +57,7 @@ const routes = () => {
 
   // New Party
   router.get("/new-party", authUser, partyController);
-  router.post("/new-party", authUser, uploadImage, createGroup, groupController);
+  router.post("/new-party", authUser, createParty);
 
   return router;
 };

@@ -1,3 +1,5 @@
+import dotenv from 'dotenv';
+dotenv.config({ path: '.env' });
 import express from "express";
 import bodyParser from "body-parser";
 import flash from "connect-flash";
@@ -7,13 +9,11 @@ import passport from "./config/passport.js";
 import router from "./routes/index.js";
 import path from "path";
 import expressLayouts from "express-ejs-layouts";
-import dotenv from 'dotenv';
 
 // Main App
 const app = express();
 
 // Development Variables
-dotenv.config({ path: '.env' });
 
 // dbModels & Config
 import db from "./config/db.js";
