@@ -36,7 +36,7 @@ const Party = db.define('party', {
         }
     },
     date: {
-        type: DataTypes.DATE,
+        type: DataTypes.DATEONLY,
         allowNull: false,
         validate: {
             notEmpty: {

@@ -1,14 +1,14 @@
 <main class="container forms-container">
     <h1><%- pageTitle %></h1>
-    <form class="default-form" action="/new-party" method="POST">
+    <form class="default-form" method="POST">
         <legend>About the party</legend>
         <div class="field">
             <label>Title</label>
-            <input type="text" name="title" placeholder="Party Title">
+            <input type="text" name="title" placeholder="Party Title" value="<%= party.title %>">
         </div>
         <div class="field">
             <label>Host</label>
-            <input type="text" name="host" placeholder="Host Name">
+            <input type="text" name="host" placeholder="Host Name" value="<%= party.host %>">
         </div>
         <div class="field">
             <label>Group</label>
@@ -16,7 +16,7 @@
                 <option value="" disabled selected>-- Select Group --</option>
                 <% if(groups.length > 0){ %>
                     <% groups.forEach(group => { %>
-                        <option value="<%= group.id %>"><%= group.name %></option>
+                        <option <%= (party.groupId === group.id) ? 'selected' : ''%> value="<%= group.id %>"><%= group.name %></option>
                     <% }) %>
                 <% } %>
             </select>
@@ -24,21 +24,21 @@
         <div class="columns-2 grid">
             <div class="field">
                 <label>Date</label>
-                <input type="date" name="date" placeholder="Party date">
+                <input type="date" name="date" placeholder="Party date" value="<%- party.date %>">
             </div>
             <div class="field">
                 <label>Hour</label>
-                <input type="time" name="hour" placeholder="Party time">
+                <input type="time" name="hour" placeholder="Party time" value="<%= party.hour %>">
             </div>
         </div>
         <div class="field">
             <label>Attendance</label>
-            <input type="number" min="1" name="attendance" placeholder="Maximum guests allowed">
+            <input type="number" min="1" name="attendance" placeholder="Maximum guests allowed" value="<%= party.attendance %>">
         </div>
         <div class="field description">
             <label>Description</label>
             <div class="container-editor">
-                <input type="hidden" id="x" name="description">
+                <input type="hidden" id="x" name="description" value="<%= party.description %>">
                 <trix-editor input="x"></trix-editor>
             </div>
         </div>
@@ -58,24 +58,27 @@
         <p class="information">Confirm that the following fields are correct:</p>
         <div class="field">
             <label>Address</label>
-            <input type="text" id="address" name="address" placeholder="Address">
+            <input type="text" id="address" name="address" placeholder="Address" value="<%= party.address %>">
         </div>
         <div class="field">
             <label>City</label>
-            <input type="text" id="city" name="city" placeholder="City">
+            <input type="text" id="city" name="city" placeholder="City" value="<%= party.city %>">
         </div>
         <div class="field">
             <label>State</label>
-            <input type="text" id="state" name="state" placeholder="State">
+            <input type="text" id="state" name="state" placeholder="State" value="<%= party.state %>">
         </div>
         <div class="field">
             <label>Country</label>
-            <input type="text" id="country" name="country" placeholder="Country">
+            <input type="text" id="country" name="country" placeholder="Country" value="<%= party.country %>">
         </div>
-            <input type="hidden" id="lat" name="lat">
-            <input type="hidden" id="lng" name="lng">
+
+            <input type="hidden" readonly="readonly" id="lat" name="lat" value="<%= party.location.coordinates[0] %>">
+
+            <input type="hidden" readonly="readonly" id="lng" name="lng" value="<%= party.location.coordinates[1] %>">
+
         <div class="field send">
-            <input type="submit" class="btn btn-green" value="New Party">
+            <input type="submit" class="btn btn-green" value="Save Changes">
         </div>
     </form>
 </main>

@@ -1,52 +1,35 @@
 <main class="container administration-panel">
     <h1><%= pageTitle %></h1>
     <div class="container-buttons">
-        <a href="/new-group" class="btn btn-yellow">New Group</a>
         <a href="/new-party" class="btn btn-blue">New Party</a>
-        <a href="/edit-profile" class="btn btn-pink">Edit Profile</a>
+        <a href="/new-group" class="btn btn-yellow">New Group</a>
         <a href="/profile-picture" class="btn btn-green">Profile Picture</a>
+        <a href="/edit-profile" class="btn btn-pink">Edit Profile</a>
     </div>
 
-    <div class="section-admin">
-        <h2>Your Parties</h2>
+    <div class="container section-admin">
+        <h2>Upcoming Parties</h2>
+        <% if( party.length > 0) { %>
         <ul>
+            <% party.forEach(py => { %>
             <li>
                 <div class="info-admin">
-                    <p class="date">Wednesday, 17 of June <%- year %></p>
-                    <h3>Bubble Party Magic</h3>
-                    <small>61 attendees</small>
+                    <p class="date"><%= moment(py.date).format('LL');%> At <%= py.hour %></p>
+
+                    <h3><%= py.title %></h3>
+                    <small><%= py.interested.length %> Interested</small>
                 </div>
                 <div class="actions container-buttons">
-                    <a href="#" class="btn btn-purple">Edit</a>
-                    <a href="#" class="btn btn-orange">Attendees</a>
-                    <a href="#" class="btn btn-red">Delete</a>
+                    <a href="/edit-party/<%= py.id %>" class="btn btn-purple">Edit</a>
+                    <a href="/party-attendance/<%= py.id %>" class="btn btn-orange">Attendees</a>
+                    <a href="/delete-party/<%= py.id %>" class="btn btn-red">Delete</a>
                 </div>
             </li>
-            <li>
-                <div class="info-admin">
-                    <p class="date">Saturday, 12 of October <%- year %></p>
-                    <h3>LoveYou</h3>
-                    <small>245 attendees</small>
-                </div>
-                <div class="actions container-buttons">
-                    <a href="#" class="btn btn-purple">Edit</a>
-                    <a href="#" class="btn btn-orange">Attendees</a>
-                    <a href="#" class="btn btn-red">Delete</a>
-                </div>
-            </li>
-            <li>
-                <div class="info-admin">
-                    <p class="date">Saturday, 06 of December<%- year %></p>
-                    <h3>PiratesMeeting</h3>
-                    <small>24 attendees</small>
-                </div>
-                <div class="actions container-buttons">
-                    <a href="#" class="btn btn-purple">Edit</a>
-                    <a href="#" class="btn btn-orange">Attendees</a>
-                    <a href="#" class="btn btn-red">Delete</a>
-                </div>
-            </li>
+            <% });  %>
         </ul>
+        <% } else { %>
+            <p class="groups-p">You haven't created any parties yet.</p>
+        <% }; %>
     </div>
     <div class="section-admin">
         <h2>Your Groups</h2>
@@ -69,5 +52,30 @@
         <% } else  { %>
             <p class="groups-p">You haven't created groups yet.</p>
         <% } %>
+    </div>
+
+    <div class="section-admin">
+        <h2>Previous Parties</h2>
+        <% if( previous.length > 0) { %>
+        <ul>
+            <% previous.forEach(py => { %>
+            <li>
+                <div class="info-admin">
+                    <p class="date"><%= moment(py.date).format('LL');%> At <%= py.hour %></p>
+
+                    <h3><%= py.title %></h3>
+                    <small><%= py.interested.length %> Interested</small>
+                </div>
+                <div class="actions container-buttons">
+                    <a href="/edit-party/<%= py.id %>" class="btn btn-purple">Edit</a>
+                    <a href="/party-attendance/<%= py.id %>" class="btn btn-orange">Attendees</a>
+                    <a href="/delete-party/<%= py.id %>" class="btn btn-red">Delete</a>
+                </div>
+            </li>
+            <% });  %>
+        </ul>
+        <% } else { %>
+            <p class="groups-p">There are no previous parties.</p>
+        <% }; %>
     </div>
 </main>

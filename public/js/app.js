@@ -1,12 +1,36 @@
 import { OpenStreetMapProvider } from 'leaflet-geosearch';
 
+// Get data from db
 const geoApiKey = process.env.GEOAPIFY_API_KEY;
-const lat= 37.770679;
-const lng = -122.47059;
+const lat = document.querySelector('#lat').value || 37.770679;
+const lng = document.querySelector('#lng').value || -122.47059;
+const address = document.querySelector('#address').value || '';
 // add to leaflet
 const map = L.map('map').setView([lat, lng], 17)
 let markers = new L.FeatureGroup().addTo(map);
 let marker;
+// put marker for the edition view
+if( lat && lng ){
+    map.setView([lat, lng], 17 );
+    marker = L.marker([lat, lng], {
+        draggable: true,
+        autoPan: true,
+    }).addTo(map).bindPopup(address).openPopup();
+    markers.addLayer(marker);
+    marker.on('moveend', function(e) {
+        marker = e.target;
+        const position = marker.getLatLng();
+        map.panTo(new L.LatLng(position.lat, position.lng));
+        // reverse
+        const reverseGeocodingUrl = `https://api.geoapify.com/v1/geocode/reverse?lat=${position.lat}&lon=${position.lng}&apiKey=${geoApiKey}`;
+        fetch(reverseGeocodingUrl).then(result => result.json())
+        .then(featureCollection => {
+          const foundAddress = featureCollection.features[0];
+          fillInput(foundAddress);
+          marker.bindPopup(`${foundAddress.properties.address_line1}, ${foundAddress.properties.city}`);
+        });
+    })
+}
 document.addEventListener('DOMContentLoaded', () => {
 L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
     maxZoom: 19,
@@ -58,7 +82,7 @@ const searchLocation= function(e){
                     const position = marker.getLatLng();
                     map.panTo(new L.LatLng(position.lat, position.lng));
                     // reverse
-                    const reverseGeocodingUrl = `https://api.geoapify.com/v1/geocode/reverse?lat=${position.lat}&lon=${position.lng}&apiKey=560aff7b524349f59b636ef842c18d45`;
+                    const reverseGeocodingUrl = `https://api.geoapify.com/v1/geocode/reverse?lat=${position.lat}&lon=${position.lng}&apiKey=${geoApiKey}`;
                     fetch(reverseGeocodingUrl).then(result => result.json())
                     .then(featureCollection => {
                       const foundAddress = featureCollection.features[0];

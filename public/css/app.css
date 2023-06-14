@@ -110,7 +110,7 @@ select {
     cursor: pointer;
 }
 .btn-yellow {
-    background-color: #fae100;
+    background-color: #ffe925;
 }
 .btn-pink {
     background-color: #ff48c2;
@@ -463,9 +463,9 @@ main.forms-container {
 .default-form legend {
     color: #2e2e2e;
     font-size: 1.6rem;
-    font-weight: 500;
+    font-weight: 700;
     font-family: 'Comme', sans-serif;
-    margin: 2rem auto 1rem auto;
+    margin: 2rem auto 2rem auto;
 }
 .default-form.comments .field {
     align-items: flex-start;
@@ -560,9 +560,8 @@ trix-toolbar .trix-button--icon-strike {
 @media (min-width:768px) {
     .section-admin li {
         display: flex;
-        justify-content: space-between;
+        justify-content: space-around;
         align-items: center;
-
     }
 }
 .section-admin .date,

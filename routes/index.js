@@ -10,7 +10,11 @@ import {
 import authController from "../controllers/authController.js";
 import {
   partyController,
-  createParty
+  createParty,
+  partyEditForm,
+  editParty,
+  partyDeleteForm,
+  deleteParty
 } from "../controllers/partyController.js"
 import {
   groupController,
@@ -58,6 +62,12 @@ const routes = () => {
   // New Party
   router.get("/new-party", authUser, partyController);
   router.post("/new-party", authUser, createParty);
+  // Edit Party
+  router.get("/edit-party/:id", authUser, partyEditForm);
+  router.post("/edit-party/:id", authUser, editParty);
+  // Delete Party
+  router.get("/delete-party/:id", authUser, partyDeleteForm);
+  router.post("/delete-party/:id", authUser, deleteParty);
 
   return router;
 };
