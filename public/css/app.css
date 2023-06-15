@@ -57,7 +57,7 @@ select {
 /* COMPONENTS */
 .alerts {
     max-width: 42rem;
-    width: 100%;
+    width: 95%;
     margin: 0 auto;
 }
 .alert {
@@ -68,9 +68,10 @@ select {
     font-weight: 700;
     padding: .5rem 4rem;
     border-radius: 0.5rem;
+    font: message-box;
 }
 .error {
-    background-color: #c73a3a;
+    background-color: #da2f26;
     font-family: 'Comme', sans-serif;
     font-weight: 400;
     font-size: 1.2rem;
@@ -85,7 +86,7 @@ select {
 
 /** buttons **/
 .btn {
-    padding: 1rem 4rem;
+    padding: 1rem;
     text-align: center;
     font-family: 'Comme', sans-serif;
     font-weight: 500;
@@ -98,6 +99,7 @@ select {
     display: block;
     flex : 0 0 100%;
 }
+
 @media (min-width: 768px) {
     .btn {
         width: auto;
@@ -105,6 +107,7 @@ select {
         flex: 0 0 auto;
     }
 }
+
 
 .btn:hover {
     cursor: pointer;
@@ -133,6 +136,9 @@ select {
 .btn-red {
     background-color: #ff3a2c;
 }
+.btn-lake {
+    background-color: #00a0c4;
+}
 
 .btn-delete {
     background-color: #ffffff;
@@ -160,6 +166,11 @@ select {
         grid-template-columns: repeat(3, 1fr);
     }
 }
+@media (max-width:768px) {
+    .grid {
+        display: block;
+    }
+}
 /** Card Component **/
 .card {
     border: 1px solid #E8E8E8;
@@ -181,6 +192,12 @@ select {
     font-family: 'Poltawski Nowy', serif;
     font-weight: 700;
     color: #484349;
+}
+@media (max-width:768px) {
+    .info-admin h3 {
+        font-size: 2.4rem;
+        text-align: center;
+    }
 }
 .card .date,
 .info-admin .date {
@@ -393,7 +410,7 @@ main.forms-container {
 }
 @media (max-width:768px) {
     h1 {
-        font-size: 1.8rem;
+        font-size: 2.2rem;
     }
     main.forms-container {
         flex-wrap: wrap;
@@ -427,6 +444,16 @@ main.forms-container {
     margin-bottom: 1rem;
     flex-wrap: wrap;
     justify-content: space-around;
+}
+.default-form .description {
+    display: block;
+}
+
+.edit-picture .field{
+    justify-content: normal;
+}
+.edit-picture .field.send {
+    justify-content: flex-start;
 }
 
 .default-form .field input {
@@ -465,7 +492,7 @@ main.forms-container {
     font-size: 1.6rem;
     font-weight: 700;
     font-family: 'Comme', sans-serif;
-    margin: 2rem auto 2rem auto;
+    margin: 1rem auto;
 }
 .default-form.comments .field {
     align-items: flex-start;
@@ -478,7 +505,7 @@ main.forms-container {
     display: flex;
     flex-direction: column;
     font-family: 'Poltawski Nowy', serif;
-
+    margin-bottom: 2rem;
 }
 trix-editor  {
     display: block;
@@ -525,6 +552,7 @@ trix-toolbar .trix-button--icon-strike {
     display: flex;
     flex-direction: column;
     margin: 0 auto;
+    width:95%;
 }
 .container-buttons a {
     margin-bottom: 1rem;
@@ -534,6 +562,7 @@ trix-toolbar .trix-button--icon-strike {
     .container-buttons {
         display: flex;
         flex-direction: row;
+        width: 100%;
     }
     .container-buttons a {
         flex: 1;
@@ -716,6 +745,11 @@ trix-toolbar {
     padding: 1rem;
     border-top-left-radius: 0.5rem;
     border-top-right-radius: 0.5rem;
+}
+@media (max-width:768px) {
+    trix-toolbar .trix-button--icon {
+        font-size: x-small;
+    }
 }
 
 ::-webkit-file-upload-button {

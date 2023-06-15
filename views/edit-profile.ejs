@@ -1,0 +1,24 @@
+<main class="container forms-container no-padding">
+    <h1><%- pageTitle %></h1>
+
+    <form class="default-form" action="/edit-profile" method="POST">
+        <div class="field">
+            <label>Username</label>
+            <input type="text" name="name" value="<%= user.name %>">
+        </div>
+        <div class="field description">
+            <label>Who am I?</label>
+            <div class="container-editor ">
+                <input type="hidden" id="x" name="description" value="<%= user.description %>">
+                <trix-editor  placeholder="Let others know a little about you. Express what you think is necessary..." input="x"></trix-editor>
+            </div>
+        </div>
+        <div class="field">
+            <label>E-mail</label>
+            <input type="email" name="email" value="<%= user.email %>">
+        </div>
+        <div class="field send">
+            <input type="submit" class="btn btn-green" value="Save Changes">
+        </div>
+    </form>
+</main>

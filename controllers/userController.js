@@ -1,13 +1,13 @@
 import Users from '../models/users.js';
 import { sendMail } from '../handlers/emails.js';
 
-export const signupForm = (req, res) => {
+const signupForm = (req, res) => {
     res.render('signup', {
         pageTitle: 'SignUp',
     });
 };
 
-export const createNewAccount = async (req, res) => {
+const createNewAccount = async (req, res) => {
     const user = req.body;
 
     try {
@@ -24,7 +24,7 @@ export const createNewAccount = async (req, res) => {
             file: 'account-confirmation'
         });
         // Flash Message & redirect
-        req.flash('success', 'We send you an email to validate your account');
+        req.flash('success', 'We send you an email to validate your account.');
         res.redirect('/login');
 
     } catch (error) {
@@ -36,7 +36,7 @@ export const createNewAccount = async (req, res) => {
 
 }
 // Confirm account subscription
-export const confirmAccount = async (req, res, next) => {
+const confirmAccount = async (req, res, next) => {
     // Verify user's account
     const user = await Users.findOne({ where: { email: req.params.email}})
     console.log(`User Info: ${req.params.email}`);
@@ -55,14 +55,65 @@ export const confirmAccount = async (req, res, next) => {
 
 }
 
-
-
 // LogIn form
-export const loginForm = (req, res) => {
+const loginForm = (req, res) => {
     res.render('login', {
         pageTitle: 'LogIn',
     });
 };
 
+// Edit profile form
+const editProfileForm = async(req, res, next) => {
+    const user = await Users.findByPk(req.user.id);
+    res.render('edit-profile', {
+        pageTitle: 'Edit Profile',
+        user
+    })
+}
+// Save on db the changes of the profile
+const editProfile = async(req, res) => {
+    const user = await Users.findByPk(req.user.id);
+    // Read data from the form
+    const {name, description, email} = req.body;
+    // Assign values
+    user.name = name;
+    user.description = description;
+    user.email = email;
+    // Save on db
+    await user.save();
+    req.flash('success', 'Profile updated successfully.');
+    res.redirect('/admin');
+}
+// Change password form
+const changePasswordForm = (req, res) => {
+    res.render('change-password', {
+        pageTitle: 'Change Password',
 
-export default {signupForm, createNewAccount, loginForm, confirmAccount};
+    })
+}
+// Look at the current password before changing it to a new one
+const changePassword = async (req, res, next) => {
+    const user = await Users.findByPk(req.user.id);
+    // Verify current password matches
+    if(!user.validatePassword(req.body.current)){
+        req.flash('error', 'The current password is incorrect.');
+        res.redirect('/change-password');
+        return next();
+    }
+    // If the current password is correct hash the new one
+    const hash = user.hashPassword(req.body.new);
+    // Assign the new password to the user
+    user.password = hash;
+    // Save it on the db
+    await user.save();
+    // Redirect to /admin
+    req.logout(function(err) {
+        if (err) { return next(err); }
+        else {
+            req.flash('success', 'Password changed successfully, please log in again');
+        }
+        res.redirect('/login');
+    });
+}
+
+export {signupForm, createNewAccount, loginForm, confirmAccount, editProfileForm, editProfile, changePasswordForm, changePassword};

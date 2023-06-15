@@ -17,6 +17,7 @@ const Users = db.define('users', {
             },
         }
     },
+    description: DataTypes.TEXT,
     image: DataTypes.STRING,
     email: {
         type: DataTypes.STRING(30),
@@ -66,7 +67,7 @@ const Users = db.define('users', {
 }, {
     hooks: {
         beforeCreate(user) {
-            user.password = bcrypt.hashSync(user.password, bcrypt.genSaltSync(12), null);
+            user.password = Users.prototype.hashPassword(user.password);
         }
     }
 })
@@ -74,6 +75,10 @@ const Users = db.define('users', {
 // Method for password authentication
 Users.prototype.validatePassword = function(password) {
     return bcrypt.compareSync(password, this.password);
+}
+// Method for hash the new password
+Users.prototype.hashPassword = function(password) {
+    return bcrypt.hashSync(password, bcrypt.genSaltSync(12), null);
 }
 
 export default Users;

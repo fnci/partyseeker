@@ -6,6 +6,10 @@ import {
   createNewAccount,
   loginForm,
   confirmAccount,
+  editProfileForm,
+  editProfile,
+  changePasswordForm,
+  changePassword,
 } from "../controllers/userController.js";
 import authController from "../controllers/authController.js";
 import {
@@ -14,8 +18,8 @@ import {
   partyEditForm,
   editParty,
   partyDeleteForm,
-  deleteParty
-} from "../controllers/partyController.js"
+  deleteParty,
+} from "../controllers/partyController.js";
 import {
   groupController,
   createGroup,
@@ -25,7 +29,7 @@ import {
   editGroupImage,
   editImage,
   groupDeleteForm,
-  deleteGroup
+  deleteGroup,
 } from "../controllers/groupController.js";
 import adminPanel from "../controllers/adminController.js";
 import authUser from "../controllers/authUser.js";
@@ -47,7 +51,13 @@ const routes = () => {
 
   // New Group
   router.get("/new-group", authUser, groupController);
-  router.post("/new-group", authUser, uploadImage, createGroup, groupController);
+  router.post(
+    "/new-group",
+    authUser,
+    uploadImage,
+    createGroup,
+    groupController
+  );
 
   // Edit Groups
   router.get("/edit-group/:groupId", authUser, groupEditForm);
@@ -68,6 +78,12 @@ const routes = () => {
   // Delete Party
   router.get("/delete-party/:id", authUser, partyDeleteForm);
   router.post("/delete-party/:id", authUser, deleteParty);
+  // Edit Profile
+  router.get("/edit-profile", authUser, editProfileForm);
+  router.post("/edit-profile", authUser, editProfile);
+  // Change Password
+  router.get("/change-password", authUser, changePasswordForm);
+  router.post("/change-password", authUser, changePassword);
 
   return router;
 };
