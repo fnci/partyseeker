@@ -23,9 +23,11 @@
         </a>
 
         <nav class="nav">
-            <a href="#">MakeParty</a>
-            <a href="/login">LogIn</a>
-            <a href="/signup">SignUp</a>
+            <% if(locals.user.id) { %>
+                <%- include ('partials/auth-nav.ejs') %>
+            <% } else { %>
+                <%- include ('partials/no-auth-nav.ejs') %>
+            <% } %>
         </nav>
     </header>
     <% if(locals.messages){ %>
@@ -44,9 +46,11 @@
     <footer class="container site-footer">
         <img class="ps-logo" src="/img/PartySeekerYP.png" alt="Copyright Logo">
         <nav class="nav">
-            <a href="#">MakeGroup</a>
-            <a href="/login">LogIn</a>
-            <a href="/signup">SignUp</a>
+            <% if(locals.user.id) { %>
+                <%- include ('partials/auth-footer.ejs') %>
+            <% } else { %>
+                <%- include ('partials/no-auth-nav.ejs') %>
+            <% } %>
             <p class="copyright">All rights reserved. PartySeeker <%- year %> &copy;</p>
         </nav>
     </footer>

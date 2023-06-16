@@ -1,5 +1,11 @@
 import Users from '../models/users.js';
 import { sendMail } from '../handlers/emails.js';
+import multer from 'multer';
+import fs from 'fs';
+import { nanoid } from 'nanoid';
+import { dirname } from 'path';
+import { fileURLToPath } from 'url';
+const __dirname = dirname(fileURLToPath(import.meta.url));
 
 const signupForm = (req, res) => {
     res.render('signup', {
@@ -116,4 +122,77 @@ const changePassword = async (req, res, next) => {
     });
 }
 
-export {signupForm, createNewAccount, loginForm, confirmAccount, editProfileForm, editProfile, changePasswordForm, changePassword};
+// Profile Picture
+const profilePhotoForm = async(req, res) => {
+    const user = await Users.findByPk(req.user.id);
+    res.render('profile-picture', {
+        pageTitle: 'Upload profile picture',
+        user
+    });
+}
+const multerConfig = {
+    limits: { fileSize: 10000000 },
+    storage: multer.diskStorage({
+        destination: (req, file, next) => {
+            next(null, __dirname + '/../public/uploads/profiles/')
+        },
+        filename: (req, file, next) => {
+            const extension = file.mimetype.split('/')[1];
+            next(null, `${nanoid(10)}.${extension}`);
+        }
+    }),
+    fileFilter(req, file, next) {
+        if(file.mimetype === 'image/jpeg' || file.mimetype === 'image/png'){
+            next(null, true);
+        }else{
+            next(new Error('Invalid file format'), false);
+        }
+    }
+}
+const upload = multer(multerConfig).single('image')
+// Upload image to the server
+const uploadPicture = (req, res, next) => {
+    upload(req, res, function (error) {
+        if(error){
+            if(error instanceof multer.MulterError){
+
+                if(error.code === 'LIMIT_FILE_SIZE'){
+                req.flash('error', 'The size file exceeds the limit of 10MB');
+                } else {
+                req.flash('error', error.message);
+                }
+            } else if (error.hasOwnProperty('message')){
+                req.flash('error', error.message);
+            }
+            res.redirect('back')
+            return;
+        }else{
+            next();
+        }
+    });
+}
+// Save the new image and delete the old one if it exists and save it on the db.
+const uploadProfilePicture = async(req, res) => {
+    const user = await Users.findByPk(req.user.id);
+    // If a picture already exist, delete it.
+    if(req.file && user.image){
+        const existingImagePath = __dirname + `/../public/uploads/profiles/${user.image}`;
+        // Delete file with and async fs method
+        fs.unlink(existingImagePath, (err) => {
+            if(err){
+                console.log(err);
+            }
+            return;
+        })
+    }
+    // Save the new picture.
+    if(req.file){
+        user.image = req.file.filename;
+    }
+    // Save it on the db and redirect.
+    await user.save();
+    req.flash('success', 'Picture Saved Successfully!');
+    res.redirect('/admin');
+}
+
+export {signupForm, createNewAccount, loginForm, confirmAccount, editProfileForm, editProfile, changePasswordForm, changePassword, profilePhotoForm, uploadPicture, uploadProfilePicture};

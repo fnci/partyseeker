@@ -62,16 +62,12 @@ app.use(flash());
 
 // Middleware (Login User, Flash Messages, Current Date)
 app.use((req, res, next) => {
+    res.locals.user = {...req.user} || null;
     res.locals.messages = req.flash();
     const date = new Date();
     res.locals.year = date.getFullYear();
     next();
 });
-
-
-
-
-
 
 
 // Routing

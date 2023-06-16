@@ -1,4 +1,5 @@
 html {
+    height: 100%;
     box-sizing: border-box;
 }
 *, *:before, *:after {
@@ -6,12 +7,20 @@ html {
 }
 body {
     font-family: 'Mogra', cursive;
-    background: #b2fefa; /* fallback for old browsers */
-    background: -webkit-linear-gradient(to bottom, #ffffff, #0ed2f7); /* Chrome 10-25, Safari 5.1-6 */
-    background: linear-gradient(to bottom, #ffffff, #0ed2f7);
+    background: #c6fffc; /* fallback for old browsers */
+    background-image: linear-gradient(to bottom, #ffffffdd, #ffffffc4, #44f3ffe1), url('../img/globes.jpg');
+    background-size: cover;
     background-repeat: no-repeat;
     background-attachment: fixed;
     color: #3f3f3f;
+    position: relative;        /* for the footer to move with the page size */
+    min-height: 100%;          /* for the footer to be at the bottom */
+    padding-bottom: 50%;
+}
+@media (min-width: 768px) {
+    body {         /* for the footer to be at the bottom */
+        padding-bottom: 10%;
+    }
 }
 h1,h2{
     font-family: 'Leckerli One', cursive;
@@ -86,7 +95,8 @@ select {
 
 /** buttons **/
 .btn {
-    padding: 1rem;
+    padding: 1rem 1rem;
+    margin-top: 0.8rem;
     text-align: center;
     font-family: 'Comme', sans-serif;
     font-weight: 500;
@@ -244,7 +254,7 @@ select {
     }
 }
 nav.nav a {
-    font-size: 1.2rem;
+    font-size: 1.5rem;
     padding: 1rem;
     display: inline-block;
 }
@@ -330,6 +340,9 @@ main.categories {
 a.header-logo {
     max-width: 50%;
 }
+.header-logo img{
+    margin-bottom: 2rem;
+}
 
 .list-categories p {
     font-size: 1rem;
@@ -338,6 +351,9 @@ a.header-logo {
     display: block;
 }
 @media (min-width:768px) {
+    .header-logo img{
+        margin: 0;
+    }
     .list-categories li p {
         font-size: 1.4rem;
     }
@@ -388,8 +404,11 @@ a.header-logo {
 }
 /** Footer **/
 .site-footer {
-    margin-top: auto;
-    padding: 2rem 0 2rem 0;
+    position: absolute;        /* for it to disappear under last body element */
+    bottom: 0;
+    right: 0;
+    left: 0;
+    padding-bottom: 1rem;
     text-align: center;
 }
 .site-footer p {
@@ -545,9 +564,9 @@ trix-toolbar .trix-button--icon-strike {
 }
 
 /** Administración **/
-.administration-panel {
+/* .administration-panel {
     padding: 0 0 4rem 0;
-}
+} */
 .container-buttons {
     display: flex;
     flex-direction: column;
@@ -763,6 +782,10 @@ trix-toolbar {
 
 .groups-p {
     text-align: center;
+    font-size: 1.5rem;
+}
+.user-p {
+    text-align: left;
     font-size: 1.5rem;
 }
 .delete-group {

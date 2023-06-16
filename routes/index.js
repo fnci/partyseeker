@@ -10,8 +10,11 @@ import {
   editProfile,
   changePasswordForm,
   changePassword,
+  profilePhotoForm,
+  uploadPicture,
+  uploadProfilePicture
 } from "../controllers/userController.js";
-import authController from "../controllers/authController.js";
+import {authController, logOut} from "../controllers/authController.js";
 import {
   partyController,
   createParty,
@@ -45,7 +48,8 @@ const routes = () => {
   // Log in
   router.get("/login", loginForm);
   router.post("/login", authController);
-
+  // Log out
+  router.get("/logout", authUser, logOut);
   // Administration panel
   router.get("/admin", authUser, adminPanel);
 
@@ -84,6 +88,13 @@ const routes = () => {
   // Change Password
   router.get("/change-password", authUser, changePasswordForm);
   router.post("/change-password", authUser, changePassword);
+  // Profile Picture
+  router.get("/profile-picture", authUser, profilePhotoForm);
+  router.post("/profile-picture", authUser, uploadPicture, uploadProfilePicture);
+
+
+
+
 
   return router;
 };
