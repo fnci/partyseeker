@@ -142,7 +142,7 @@ const multerConfig = {
         }
     }),
     fileFilter(req, file, next) {
-        if(file.mimetype === 'image/jpeg' || file.mimetype === 'image/png'){
+        if(file.mimetype === 'image/jpeg' || file.mimetype === 'image/png' | file.mimetype === 'image/jpg'){
             next(null, true);
         }else{
             next(new Error('Invalid file format'), false);

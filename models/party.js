@@ -2,6 +2,7 @@ import { DataTypes } from 'sequelize';
 import slug from 'slug';
 import { nanoid } from 'nanoid';
 import db from '../config/db.js';
+import Categories from './categories.js';
 import Users from './users.js';
 import Groups from './groups.js';
 
@@ -21,10 +22,19 @@ const Party = db.define('party', {
             }
         }
     },
+    slug: {
+        type: DataTypes.STRING,
+    },
     host: DataTypes.STRING,
+    image: DataTypes.TEXT,
     guests: {
         type: DataTypes.INTEGER,
         defaultValue: 0,
+    },
+    url: {
+        type: DataTypes.TEXT,
+        allowNull: true,
+        isUrl: true
     },
     description: {
         type: DataTypes.TEXT,
@@ -105,6 +115,8 @@ const Party = db.define('party', {
         }
     }
 })
+
+Party.belongsTo(Categories);
 Party.belongsTo(Users);
 Party.belongsTo(Groups);
 

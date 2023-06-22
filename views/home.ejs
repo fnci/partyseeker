@@ -1,1 +1,90 @@
-<h1><%-pageTitle%></h1>
+<div class="hero">
+    <h1>Find or create a party to have fun with whoever you want!</h1>
+    <a href="/signup"><button class="btn glow-on-hover">Sign up</button></a>
+</div>
+
+<div class="container seeker-start">
+    <div class="container">
+        <h2>Search a party in your city</h2>
+        <form action="#">
+            <select name="category">
+                    <option value="" disabled selected>-- Select Category --</option>
+                    <% categories.forEach( category => { %>
+                        <option value="<%= category.id %>" <%= (category.categoryId === category.id) ? "selected" : '' %>
+                        ><%= category.name %>
+                        </option>
+                    <% });%>
+            </select>
+            <input type="text" name="name" placeholder="Party Name">
+            <input type="text" name="city" placeholder="City">
+            <input type="text" name="country" placeholder="Country">
+            <input type="submit" value="search" class="btn btn-green">
+        </form>
+    </div>
+</div>
+
+<div class="container">
+    <h2 class="neon-pink">Upcoming Parties</h2>
+    <div class="grid columns-md-3 ">
+        <% if(parties.length > 0) {  %>
+            <% parties.forEach(party => { %>
+                <div class="card">
+                    <img src="/uploads/parties/<%= party.image %>">
+                    <div class="card-text">
+                        <% moment.locale('en') %>
+                        <% const date = `${party.date} ${party.hour}`%>
+                        <p class="date"><%= moment(date).format('LLLL')%></p>
+                        <p class="from-now"><%= moment(date).fromNow()%></p>
+                        <a href="/party/<%= party.slug %>">
+                            <h3><%= party.title %></h3>
+                        </a>
+                        <div class="info-author">
+                            <div class="information">
+                                <p>Organized by:</p>
+                                <p class="author">Francisco José</p>
+                            </div>
+                            <% if(party.user.image){ %>
+                                <div class="image">
+                                    <img src="/uploads/profiles/<%= party.user.image %>" alt="Profile Picture of <%= party.user.name %>">
+                                </div>
+                            <% } else { %>
+                                <div class="image"></div>
+                            <% } %>
+                        </div>
+                    </div>
+                </div>
+            <% }); %>
+        <% } %>
+    </div>
+</div>
+
+<main class="bg-grey categories">
+    <h2>Find parties by category</h2>
+
+    <div class="container">
+        <ul class="list-categories  grid columns-2 columns-md-3">
+            <% categories.forEach( category => { %>
+            <li>
+                <a href="/category/<%= category.slug %>">
+                    <img src="/img/category_<%= category.id %>.jpg">
+                    <p><%= category.name %></p>
+                </a>
+            </li>
+            <% });%>
+        </ul>
+    </div>
+</main>
+
+<div class="section-info partyseeker-bg">
+    <div class="container partyseeker grid columns-md-2">
+            <section class="section-1">
+                <h3>Create a party</h3>
+                <p>If you want to have a lot of fun, feel free to make it happen!</p>
+            </section>
+            <section class="section-2">
+                <h3>Join a group</h3>
+                <p>Meet people with your same hobbies and passions, join an existing group and receive notifications about upcoming events</p>
+            </section>
+        </div>
+    </div>
+</div>

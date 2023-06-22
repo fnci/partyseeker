@@ -8,7 +8,10 @@ const Categories = db.define('categories', {
         primaryKey: true,
         autoIncrement: true
     },
-    name: DataTypes.TEXT
+    name: DataTypes.TEXT,
+    slug: DataTypes.TEXT
+}, {
+    timestamps: false
 });
 
 

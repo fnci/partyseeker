@@ -1,0 +1,21 @@
+<main class="container forms-container">
+    <h1><%- pageTitle %></h1>
+    <form class="default-form edit-picture" method="POST" enctype="multipart/form-data">
+
+        <div class="field send-btn">
+            <label>Picture</label>
+            <input type="file" name="image">
+        </div>
+        <% if(party.image){ %>
+        <div class="field">
+            <label class="img-label" for="">Actual image</label>
+            <img src="/uploads/parties/<%= party.image %>" width="400" alt="Party Image">
+        </div>
+        <% } else { %>
+            <p class="">No image has been uploaded yet.</p>
+        <% } %>
+        <div class="field send">
+            <input class="btn btn-pink" type="submit" value="Upload Picture">
+        </div>
+    </form>
+</main>

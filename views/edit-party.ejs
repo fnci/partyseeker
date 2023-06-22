@@ -7,8 +7,25 @@
             <input type="text" name="title" placeholder="Party Title" value="<%= party.title %>">
         </div>
         <div class="field">
+            <label>Category</label>
+            <select name="categoryId">
+                <option value="" selected disabled>
+                    -- Select Category --
+                </option>
+                <% categories.forEach( category => { %>
+                    <option value="<%= category.id %>" <%= (party.categoryId === category.id) ? "selected" : '' %>
+                    ><%= category.name %>
+                    </option>
+                <% });%>
+            </select>
+        </div>
+        <div class="field">
             <label>Host</label>
             <input type="text" name="host" placeholder="Host Name" value="<%= party.host %>">
+        </div>
+        <div class="field">
+            <label>Website</label>
+            <input type="url" name="url" placeholder="Url"  value="<%= party.url %>">
         </div>
         <div class="field">
             <label>Group</label>

@@ -8,8 +8,8 @@
         <a href="/change-password" class="btn btn-lake">Change Password</a>
     </div>
 
-    <div class="container section-admin">
-        <h2>Upcoming Parties</h2>
+    <div class="section-admin">
+        <h2 class="neon-pink">Upcoming Parties</h2>
         <% if( party.length > 0) { %>
         <ul>
             <% party.forEach(py => { %>
@@ -22,7 +22,8 @@
                 </div>
                 <div class="actions container-buttons">
                     <a href="/edit-party/<%= py.id %>" class="btn btn-purple">Edit</a>
-                    <a href="/party-attendance/<%= py.id %>" class="btn btn-orange">Attendees</a>
+                    <a href="/party-image/<%= py.id %>" class="btn btn-blue">Picture</a>
+                    <a href="/party-attendance/<%= py.id %>" class="btn btn-yellow">Attendees</a>
                     <a href="/delete-party/<%= py.id %>" class="btn btn-red">Delete</a>
                 </div>
             </li>
@@ -32,6 +33,7 @@
             <p class="groups-p">You haven't created any parties yet.</p>
         <% }; %>
     </div>
+
     <div class="section-admin">
         <h2>Your Groups</h2>
         <% if(groups.length){ %>

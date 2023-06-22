@@ -10,8 +10,13 @@ const adminPanel = async(req, res) => {
     const query = [];
     query.push(Groups.findAll({where: {userId : req.user.id}}));
     query.push(Party.findAll({where: {userId : req.user.id,
-        date: {[Op.gte] : moment(new Date()).format("YYYY-MM-DD")}
-    }}));
+                    date: {[Op.gte] : moment(new Date()).format("YYYY-MM-DD")}
+                    },
+                order: [
+                    ['date', 'ASC']
+                ]
+
+    }));
     query.push(Party.findAll({where: {userId : req.user.id,
         date: {[Op.lt] : moment(new Date()).format("YYYY-MM-DD")}
     }}));

@@ -1,14 +1,31 @@
 <main class="container forms-container">
     <h1><%- pageTitle %></h1>
-    <form class="default-form" action="/new-party" method="POST">
+    <form class="default-form" action="/new-party" method="POST" enctype="multipart/form-data">
         <legend>About the party</legend>
         <div class="field">
-            <label>Title</label>
+            <label>Title<span>&#42;</span></label>
             <input type="text" name="title" placeholder="Party Title">
+        </div>
+        <div class="field">
+            <label>Category</label>
+            <select name="categoryId">
+                <option value="" selected disabled hidden>
+                    -- Select Category --
+                </option>
+                <% categories.forEach( category => { %>
+                    <option value="<%= category.id %>">
+                    <%= category.name %>
+                    </option>
+                <% });%>
+            </select>
         </div>
         <div class="field">
             <label>Host</label>
             <input type="text" name="host" placeholder="Host Name">
+        </div>
+        <div class="field">
+            <label>Website</label>
+            <input type="url" name="url" placeholder="Url">
         </div>
         <div class="field">
             <label>Group</label>
@@ -23,11 +40,11 @@
         </div>
         <div class="columns-2 grid">
             <div class="field">
-                <label>Date</label>
+                <label>Date<span>&#42;</span></label>
                 <input type="date" name="date" placeholder="Party date">
             </div>
             <div class="field">
-                <label>Hour</label>
+                <label>Hour<span>&#42;</span></label>
                 <input type="time" name="hour" placeholder="Party time">
             </div>
         </div>
@@ -36,13 +53,16 @@
             <input type="number" min="1" name="attendance" placeholder="Maximum guests allowed">
         </div>
         <div class="field description">
-            <label>Description</label>
+            <label>Description<span>&#42;</span></label>
             <div class="container-editor">
                 <input type="hidden" id="x" name="description">
                 <trix-editor input="x"></trix-editor>
             </div>
         </div>
-
+        <div class="img-btn">
+            <label>Picture</label>
+            <input type="file" name="image">
+        </div>
         <legend>Party Location</legend>
 
         <div class="field">
@@ -57,23 +77,26 @@
 
         <p class="information">Confirm that the following fields are correct:</p>
         <div class="field">
-            <label>Address</label>
+            <label>Address<span>&#42;</span></label>
             <input type="text" id="address" name="address" placeholder="Address">
         </div>
         <div class="field">
-            <label>City</label>
+            <label>City<span>&#42;</span></label>
             <input type="text" id="city" name="city" placeholder="City">
         </div>
         <div class="field">
-            <label>State</label>
+            <label>State<span>&#42;</span></label>
             <input type="text" id="state" name="state" placeholder="State">
         </div>
         <div class="field">
-            <label>Country</label>
+            <label>Country<span>&#42;</span></label>
             <input type="text" id="country" name="country" placeholder="Country">
         </div>
             <input type="hidden" id="lat" name="lat">
             <input type="hidden" id="lng" name="lng">
+        <div class="fiel required-field">
+        <p><span>&#42;</span> Indicates a required field</p>
+        </div>
         <div class="field send">
             <input type="submit" class="btn btn-green" value="New Party">
         </div>

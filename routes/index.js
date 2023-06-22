@@ -18,8 +18,11 @@ import {authController, logOut} from "../controllers/authController.js";
 import {
   partyController,
   createParty,
+  uploadPartyImage,
   partyEditForm,
   editParty,
+  editPartyImage,
+  editPartiesImage,
   partyDeleteForm,
   deleteParty,
 } from "../controllers/partyController.js";
@@ -38,31 +41,27 @@ import adminPanel from "../controllers/adminController.js";
 import authUser from "../controllers/authUser.js";
 
 const routes = () => {
-  router.get("/", home);
 
+  /* Public */
+  router.get("/", home);
   // Create and confirm account
   router.get("/signup", signupForm);
   router.post("/signup", createNewAccount);
   router.get("/account-confirmation/:email", confirmAccount);
-
   // Log in
   router.get("/login", loginForm);
   router.post("/login", authController);
   // Log out
   router.get("/logout", authUser, logOut);
+
+
+  /* Private */
+
   // Administration panel
   router.get("/admin", authUser, adminPanel);
-
   // New Group
   router.get("/new-group", authUser, groupController);
-  router.post(
-    "/new-group",
-    authUser,
-    uploadImage,
-    createGroup,
-    groupController
-  );
-
+  router.post("/new-group", authUser, uploadImage, createGroup, groupController);
   // Edit Groups
   router.get("/edit-group/:groupId", authUser, groupEditForm);
   router.post("/edit-group/:groupId", authUser, editGroup);
@@ -75,10 +74,13 @@ const routes = () => {
 
   // New Party
   router.get("/new-party", authUser, partyController);
-  router.post("/new-party", authUser, createParty);
+  router.post("/new-party", authUser, uploadPartyImage, createParty);
   // Edit Party
   router.get("/edit-party/:id", authUser, partyEditForm);
   router.post("/edit-party/:id", authUser, editParty);
+    // Edit the Party Picture
+  router.get("/party-image/:id", authUser, editPartyImage);
+  router.post("/party-image/:id", authUser, uploadPartyImage, editPartiesImage);
   // Delete Party
   router.get("/delete-party/:id", authUser, partyDeleteForm);
   router.post("/delete-party/:id", authUser, deleteParty);
