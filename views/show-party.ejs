@@ -1,0 +1,107 @@
+<div class="party-header">
+    <div class="container">
+        <!-- Party summary -->
+        <div class="party-summary">
+            <!-- <%= JSON.stringify(party)  %> -->
+            <h1><%= party.title %></h1>
+            <div class="info-author">
+                <div class="image party-author-img">
+                    <% if(party.user.image) { %>
+                    <img src="/uploads/profiles/<%= party.user.image %>" alt="User picture">
+                    <% } %>
+                </div>
+                <!-- info author -->
+                <div class="info">
+                    <p>
+                        Organized by:
+                    </p>
+                    <p class="author">
+                        <a href="/users/<%= party.user.id %>"><%= party.user.name %></a>
+                        <% if(party.group?.name) {%>
+                        <p>Creator of: </p>
+                        <a href="/groups/<%= party.group?.id %>"><%= party.group?.name %></a>
+                        <% } %>
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <div class="attendance-question">
+            <% if(user.id){ %>
+            <p>Will you attend?</p>
+            <a href="#" class="btn btn-blue">Yes</a>
+            <% } %>
+        </div>
+    </div>
+</div>
+<main class="party-content">
+    <div class="container">
+        <!-- Party Info -->
+        <div class="party-info">
+            <div class="description">
+                <!-- Party Picture -->
+                <img src="/uploads/parties/<%= party.image %>" alt="">
+                <!-- Description -->
+                <%- party.description %>
+            </div>
+            <!-- Assistants -->
+            <div class="assistants">
+                <div class="title">
+                    <h3><%= party.interested.length %> Assistants</h3>
+                    <a href="/assistants/<%= party.slug %>">See all</a>
+                </div>
+            </div>
+            <!-- Comments -->
+            <div class="comments">
+                <h2>Comments</h2>
+                <div class="comment">
+                    <div class="image">
+
+                    </div>
+                    <div class="text">
+                        <p>Hi there</p>
+                        <p>Written by: <span>Francisco</span> </p>
+                        <input type="button" value="Delete" class="btn btn-blue">
+                    </div>
+                </div>
+                <div class="comment">
+                    <div class="image">
+
+                    </div>
+                    <div class="text">
+                        <p>Hi there</p>
+                        <p>Written by: <span>Francisco</span> </p>
+                    </div>
+                </div>
+                <form action="#" class="default-form comments">
+                    <legend>Add a comment</legend>
+                    <div class="field">
+                        <label for="comment">Comment</label>
+                        <textarea name="comment" id="comment"></textarea>
+                    </div>
+                    <div class="field send">
+                        <input type="submit" value="Send" class="btn btn-pink">
+                    </div>
+                </form>
+            </div>
+
+        </div>
+        <aside class="date-location-info">
+            <div class="date">
+                <% moment.locale('en') %>
+                        <% const date = `${party.date} ${party.hour}`%>
+                        <p class="date"><%= moment(date).format('LLLL')%></p>
+                        <p class="from-now"><%= moment(date).fromNow()%></p>
+            </div>
+            <div class="location">
+                <p><%= party.address %>, <%= party.city %>,</p>
+                <p><%= party.state %>, <%= party.country %></p>
+            </div>
+            <!-- Location Map -->
+            <input type="hidden" name="" id="lat" value="<%- party.location.coordinates[0] %>">
+            <input type="hidden" name="" id="lng" value="<%- party.location.coordinates[1] %>">
+            <input type="hidden" name="" id="address" value="<%- party.address %>">
+            <div id="party-location"></div>
+        </aside>
+    </div>
+</main>

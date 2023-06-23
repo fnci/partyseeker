@@ -39,11 +39,16 @@ import {
 } from "../controllers/groupController.js";
 import adminPanel from "../controllers/adminController.js";
 import authUser from "../controllers/authUser.js";
+import {showParty} from '../controllers/frontend/partyseekerController.js'
 
 const routes = () => {
 
   /* Public */
   router.get("/", home);
+  // Show a Party
+  router.get('/party/:slug',
+    showParty
+  );
   // Create and confirm account
   router.get("/signup", signupForm);
   router.post("/signup", createNewAccount);

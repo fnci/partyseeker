@@ -31,8 +31,8 @@ const home = async(req, res) => {
     }));
     // Destructuring
     const [categories, parties] = await Promise.all(queries)
-    console.log(parties);
-    console.log(parties.length);
+/*     console.log(parties);
+    console.log(parties.length); */
         res.render('home', {
             pageTitle: 'Home page',
             categories,

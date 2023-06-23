@@ -22,12 +22,7 @@ body {
     color: #3f3f3f;
     position: relative;        /* for the footer to move with the page size */
     min-height: 100%;          /* for the footer to be at the bottom */
-    padding-bottom: 70%;
-}
-@media (min-width: 768px) {
-    body {         /* for the footer to be at the bottom */
-        padding-bottom: 10%;
-    }
+
 }
 h1,h2{
     text-align: center;
@@ -138,7 +133,7 @@ span {
 .neon-pink {
     font-weight: 700;
     letter-spacing: 2px;
-    text-decoration: 1px dotted rgba(255, 255, 255, 0.963) line-through;
+    /* text-decoration: 1px dotted rgba(255, 255, 255, 0.963) line-through; */
     color: #ffffff;
     animation: neon1 1.2s ease-in-out infinite alternate;
 }
@@ -282,6 +277,10 @@ span {
 /** Card Component **/
 .card {
     border: 2px solid #ffffff;
+    background-color: #ffffff;
+    -webkit-box-shadow: 0px 0px 54px 1px rgba(254,255,219,1);
+-moz-box-shadow: 0px 0px 54px 1px rgba(254,255,219,1);
+box-shadow: 0px 0px 54px 1px rgba(254,255,219,1);
     margin-bottom: 2rem;
     border-radius: 0.5rem;
 }
@@ -308,7 +307,6 @@ span {
 .card .date,
 .info-admin .date {
     font-family: 'Urbanist', sans-serif;
-    font-size: 1rem;
 }
 .card p {
     margin: 0;
@@ -316,7 +314,9 @@ span {
 .card img {
     border-radius: 0.5rem 0.5rem 0rem 0rem;
 }
-
+/* .from-now {
+    font-weight: bold;
+} */
 .info-author {
     display: flex;
     justify-content: space-around;
@@ -328,10 +328,10 @@ span {
 }
 
 .info-author .image img{
-   width: 6rem;
-   height: 6rem;
+   width: 8rem;
+   height: 8rem;
    border-radius: 50%;
-   filter: drop-shadow(0 0 0.75rem rgb(0, 0, 0));
+   filter: drop-shadow(0 0 0.25rem rgba(0, 0, 0, 0.734));
    /* background-color: #31d000; */
 }
 .info-author .author {
@@ -558,12 +558,10 @@ a.header-logo {
         padding-bottom: 1.5rem;
     }
 }
+
 /** Footer **/
 .site-footer {
-    position: absolute;        /* for it to disappear under last body element */
-    bottom: 0;
-    right: 0;
-    left: 0;
+    margin-top: 2rem;
     padding-bottom: 1rem;
     text-align: center;
 }
@@ -572,13 +570,14 @@ a.header-logo {
 }
 @media (min-width:768px) {
     .site-footer {
+        position: initial;
         display: flex;
         justify-content: space-between;
         align-items: center;
     }
 }
 
-/** Crear Cuenta **/
+/** New Account **/
 main.forms-container {
     max-width: 900px;
     width:95%;
@@ -721,7 +720,7 @@ trix-toolbar .trix-button--icon-strike {
     display: none;
 }
 
-/** Administración **/
+/* Administration */
 /* .administration-panel {
     padding: 0 0 4rem 0;
 } */
@@ -751,7 +750,7 @@ trix-toolbar .trix-button--icon-strike {
     }
 }
 
-/** Listado de Eventos admin**/
+/* Event List Admin */
 .section-admin .neon-pink{
     padding: 0.5rem;
     margin: 2rem auto 1rem auto;
@@ -794,19 +793,19 @@ trix-toolbar .trix-button--icon-strike {
     width: 100%;
 }
 
-/** Single Eventos **/
+/* Assistance */
 
-.header-event {
-    border-top: 4px solid #EAEAEA;
-    padding: 5rem 0;
+.party-header {
+    /* border-top: 4px solid #EAEAEA; */
+    padding: 3rem 0;
 }
 @media (min-width:768px) {
-    .header-event .container {
+    .party-header .container {
         display: flex;
         justify-content: space-between;
     }
 }
-.event-summary h1 {
+.party-summary h1 {
     font-family: 'Livvic', sans-serif;
     text-align: left;
     font-size: 2rem;
@@ -833,25 +832,25 @@ trix-toolbar .trix-button--icon-strike {
 .attendance-options a:first-of-type{
     margin-right: 2rem;
 }
-.content-event {
-    background-color: #F2F2F2;
-    padding: 5rem 0;
+.party-content {
+    background-color: #ffffff78;
+    padding: 2rem 0;
 }
 @media (min-width:768px) {
-    .content-event .container{
+    .party-content .container{
         display: flex;
         justify-content: space-between;
         align-items: flex-start;
     }
-    .content-event .info-event {
+    .party-content .party-info {
         flex: 0 0 60%;
     }
-    .content-event .info{
+    .party-content .info{
         flex: 0 0 calc(40% - 2rem);
     }
 }
 
-/** Asistentes **/
+/* Assistants */
 .assistants .title {
     display: flex;
     justify-content: space-between;
@@ -888,7 +887,8 @@ trix-toolbar .trix-button--icon-strike {
 .comment .text {
     padding: 2rem;
     border: 1px solid #C7C7C7;
-    background-color: white;
+    border-radius: 0.5rem;
+    background-color: rgb(255, 255, 255);
 }
 .comment .text p {
     margin: 0;
@@ -896,31 +896,42 @@ trix-toolbar .trix-button--icon-strike {
 
 
 /** Sidebar **/
-.content-event aside {
+.party-content aside {
     background-color: white;
     border: 1px solid #C7C7C7;
 }
-.content-event aside > div {
+.party-content aside > div {
     padding: 1rem  0 1rem 5rem;
     background-size: 50px;
-    background-position: center left;
+    background-position: left;
     background-repeat: no-repeat;
     margin: 2rem;
 }
-.content-event aside  p {
+.party-content aside  p {
     margin: 0;
 }
 
 aside .date {
-    background-image: url(../img/icono-hora.svg);
+    background-image: url(../img/time-calendar.svg);
     margin-bottom: 2rem;
 }
 aside .location {
-    background-image: url(../img/icono-location.svg);
+    background-image: url(../img/location-icon.svg);
+}
+
+#party-location {
+    max-width: 100%;
+    padding: 0!important;
+    /* margin: 0!important; */
+    height: 400px;
+    border-radius: 0.5rem;
 }
 aside img {
     display: block;
 }
+/* aside .information {
+    margin-right: 2rem;
+} */
 
 trix-toolbar {
     padding: 1rem;
@@ -958,7 +969,31 @@ trix-toolbar {
 #seeker-input{}
 .information {
     text-align: center;
+    border-radius: 0.5rem;
     font-family: 'Grandstander', cursive;
     font-weight: 400;
     font-size: 1rem;
+}
+
+.date-location-info {
+    text-align: center;
+    border-radius: 0.5rem;
+    margin-left: 2.35rem;
+}
+.date-location-info{
+    /* word-break: break-all; */
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+@media (max-width:768px) {
+    .date-location-info {
+        margin: 0 auto;
+    }
+}
+
+/* div .description{
+    line-height: 2;
+} */
+div .description h1{
+    font-size: 2rem;
 }
