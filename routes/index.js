@@ -39,7 +39,7 @@ import {
 } from "../controllers/groupController.js";
 import adminPanel from "../controllers/adminController.js";
 import authUser from "../controllers/authUser.js";
-import {showParty} from '../controllers/frontend/partyseekerController.js'
+import {showParty, confirmAssistance, showAttendees} from '../controllers/frontend/partyseekerController.js'
 
 const routes = () => {
 
@@ -49,6 +49,14 @@ const routes = () => {
   router.get('/party/:slug',
     showParty
   );
+  // Confirm party assistance
+  router.post('/confirm-assistance/:slug',
+    confirmAssistance
+  );
+  // Show attendees.
+  router.get('/assistants/:slug',
+    showAttendees
+  )
   // Create and confirm account
   router.get("/signup", signupForm);
   router.post("/signup", createNewAccount);

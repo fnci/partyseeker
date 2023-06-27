@@ -28,8 +28,21 @@
 
         <div class="attendance-question">
             <% if(user.id){ %>
-            <p>Will you attend?</p>
-            <a href="#" class="btn btn-blue">Yes</a>
+                <% const exist = party.interested.includes(user.id); %>
+            <form action="/confirm-assistance/<%= party.slug %>" id="confirm-assistance">
+                <p>Will you attend?</p>
+                <% if(exist){ %>
+                    <input type="hidden" id="check" value="cancel">
+                    <input type="submit" class="btn btn-red" value="Nope"></input>
+                <% } else { %>
+                    <input type="hidden" id="check" value="confirm">
+                <input type="submit" class="btn btn-blue" value="Yeah"></input>
+                <% } %>
+                <div id="message"></div>
+            </form>
+            <!-- <a href="#" class="btn btn-blue">Yes</a> -->
+            <% } else { %>
+                <p>Sign in to confirm your attendance</p>
             <% } %>
         </div>
     </div>

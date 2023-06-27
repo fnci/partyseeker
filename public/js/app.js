@@ -1,4 +1,5 @@
 import { OpenStreetMapProvider } from 'leaflet-geosearch';
+import assistance from './assistance.js';
 
 // Get data from db
 const geoApiKey = process.env.GEOAPIFY_API_KEY;

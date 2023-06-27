@@ -4,9 +4,9 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 });
 
-const lat = document.querySelector('#lat').value;
-const lng = document.querySelector('#lng').value;
-const address = document.querySelector('#address').value;
+const lat = document.querySelector('#lat').value || 37.770679;
+const lng = document.querySelector('#lng').value || -122.47059;
+const address = document.querySelector('#address').value || '';
 
 
 function showMap() {

@@ -9,7 +9,7 @@ const __dirname = dirname(fileURLToPath(import.meta.url));
 
 const signupForm = (req, res) => {
     res.render('signup', {
-        pageTitle: 'SignUp',
+        pageTitle: 'Signup',
     });
 };
 
@@ -64,7 +64,7 @@ const confirmAccount = async (req, res, next) => {
 // LogIn form
 const loginForm = (req, res) => {
     res.render('login', {
-        pageTitle: 'LogIn',
+        pageTitle: 'Login',
     });
 };
 
