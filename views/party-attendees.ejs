@@ -4,11 +4,9 @@
     <ul class="list-assistants">
         <% assistants.forEach(assistant => { %>
             <li>
-                <div class="image">
-                    <% if(assistant.image){ %>
-                        <img src="/uploads/profiles/<%=assistant.image%>" alt="Assistant Picture">
-                    <% } %>
-                </div>
+                <% if(assistant.image){ %>
+                    <img src="/uploads/profiles/<%=assistant.image%>" alt="Assistant Picture">
+                <% } %>
                 <div class="text">
                     <%= assistant.name %>
                 </div>

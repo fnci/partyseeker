@@ -40,6 +40,8 @@ import {
 import adminPanel from "../controllers/adminController.js";
 import authUser from "../controllers/authUser.js";
 import {showParty, confirmAssistance, showAttendees} from '../controllers/frontend/partyseekerController.js'
+import {showUser} from '../controllers/frontend/usersController.js'
+
 
 const routes = () => {
 
@@ -57,6 +59,10 @@ const routes = () => {
   router.get('/assistants/:slug',
     showAttendees
   )
+  // Show user profile
+  router.get('/users/:id',
+    showUser
+  );
   // Create and confirm account
   router.get("/signup", signupForm);
   router.post("/signup", createNewAccount);

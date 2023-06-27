@@ -1,0 +1,60 @@
+<main class="assistants container">
+    <h1><%= pageTitle %></h1>
+    <div class="user-info">
+        <div class="image">
+            <% if(users.image){ %>
+                <img src="/uploads/profiles/<%= users.image %>" alt="Profile Picture">
+            <% } %>
+        </div>
+        <div class="text">
+            <%- users.description %>
+        </div>
+        <div class="party-info">
+            <% if(parties.length > 0){ %>
+                <h2>Parties of: <%= users.name %></h2>
+                <ul class="parties-list">
+                    <% parties.forEach(party => { %>
+                        <li>
+                            <div class="image">
+                                <% if(party.image){ %>
+                                    <img src="/uploads/parties/<%= party.image %>" alt="Party Image">
+                                <% } else { %>
+                                    <img src="/img/holdingballoons.jpg" alt="Holding Balloons Image">
+                                <% } %>
+                            </div>
+
+                            <div class="text">
+                                <a href="/party/<%= party.slug %>">
+                                    <h3><%= party.title %></h3>
+                                </a>
+                            </div>
+                        </li>
+                    <% }); %>
+                </ul>
+            <% } %>
+        </div>
+        <div class="group-info">
+            <% if(groups.length > 0){ %>
+                <h2>Groups of: <%= users.name %></h2>
+                <ul class="groups-list">
+                    <% groups.forEach(group => { %>
+                        <li>
+                            <div class="image">
+                                <% if(group.image){ %>
+                                    <img src="/uploads/groups/<%= group.image %>" alt="Group Image">
+                                <% } else { %>
+                                    <img src="/img/group.jpg" alt="Group Image">
+                                <% } %>
+                            </div>
+                            <div class="text">
+                                <a href="/groups/<%= group.name %>">
+                                    <h3><%= group.name %></h3>
+                                </a>
+                            </div>
+                        </li>
+                    <% }); %>
+                </ul>
+            <% } %>
+        </div>
+    </div>
+</main>

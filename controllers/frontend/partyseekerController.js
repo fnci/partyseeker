@@ -70,4 +70,8 @@ const showAttendees = async(req, res) => {
     });
 }
 
-export {showParty, confirmAssistance, showAttendees}
+const showUser = async (req, res) => {
+
+}
+
+export {showParty, confirmAssistance, showAttendees, showUser}

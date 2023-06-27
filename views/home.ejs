@@ -29,7 +29,11 @@
         <% if(parties.length > 0) {  %>
             <% parties.forEach(party => { %>
                 <div class="card">
-                    <img src="/uploads/parties/<%= party.image %>">
+                    <% if(party.image){ %>
+                        <img src="/uploads/parties/<%= party.image %>" alt="Party Image">
+                    <% } else { %>
+                        <img src="/img/holdingballoons.jpg" alt="Holding Balloons Image">
+                    <% } %>
                     <div class="card-text">
                         <% moment.locale('en') %>
                         <% const date = `${party.date} ${party.hour}`%>
