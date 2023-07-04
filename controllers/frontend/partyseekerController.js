@@ -6,7 +6,7 @@ import moment from 'moment';
 
 
 // Show party view
-const showParty = async(req, res) => {
+const showParty = async(req, res, next) => {
     const party = await Party.findOne({
        where: {
         slug: req.params.slug
@@ -24,6 +24,7 @@ const showParty = async(req, res) => {
     // If the party doesn't exist
     if(!party) {
         res.redirect('/');
+        return next();
     }
     // Pass the result to the view
     res.render('show-party', {
@@ -70,8 +71,6 @@ const showAttendees = async(req, res) => {
     });
 }
 
-const showUser = async (req, res) => {
 
-}
 
-export {showParty, confirmAssistance, showAttendees, showUser}
+export {showParty, confirmAssistance, showAttendees}

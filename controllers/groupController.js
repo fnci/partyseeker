@@ -26,8 +26,8 @@ const multerConfig = {
             next(new Error('Invalid file format'), false);
         }
     }
-}
-const upload = multer(multerConfig).single('image')
+};
+const upload = multer(multerConfig).single('image');
 // Upload image to the server
 const uploadImage = (req, res, next) => {
     upload(req, res, function (error) {
@@ -48,16 +48,15 @@ const uploadImage = (req, res, next) => {
             next();
         }
     });
-}
-
+};
+// show form for new groups
 const groupController = async (req, res) => {
     const categories = await Categories.findAll();
-
     res.render('new-group', {
         pageTitle: 'New Group',
         categories
-    })
-}
+    });
+};
 
 // Store groups on db
 const createGroup = async(req, res) => {
@@ -68,7 +67,6 @@ const createGroup = async(req, res) => {
 
     group.image = req.file?.filename;
 
-
     try {
        // store in db
        await Groups.create(group);
@@ -78,20 +76,25 @@ const createGroup = async(req, res) => {
         const sequelizeError = error.errors?.map(err => err.message);
         req.flash('error', sequelizeError);
         res.redirect('/new-group');
-    }
-}
-// Edit group
-const groupEditForm = async (req, res) => {
+    };
+};
+// Edit group form
+const groupEditForm = async(req, res, next) => {
      const inquiries = [];
      inquiries.push( Groups.findByPk(req.params.groupId));
      inquiries.push( Categories.findAll());
      const [group, categories] = await Promise.all(inquiries);
+     if(!group || !categories) {
+        req.flash('error', 'Action not allowed');
+        res.redirect('/admin');
+        return next();
+     };
      res.render('edit-group', {
         pageTitle: `Edit group: ${group.name}`,
         group,
         categories
-     })
-}
+     });
+};
 // Save the changes on the db
 const editGroup = async (req, res, next) => {
     const group = await Groups.findOne({where: {id : req.params.groupId, userId: req.user.id}});
@@ -109,10 +112,16 @@ const editGroup = async (req, res, next) => {
     group.categoryId = categoryId;
     group.url = url;
     // Save on db
-    await group.save();
-    req.flash('success', 'Group Successfully Updated!');
-    res.redirect('/admin');
-}
+    try {
+        await group.save();
+        req.flash('success', 'Group Successfully Updated!');
+        res.redirect('/admin');
+    } catch (error) {
+        const sequelizeError = error.errors?.map(err => err.message);
+        req.flash('error', sequelizeError);
+        res.redirect(`/edit-group/${group.id}`);
+    };
+};
 // show form to edit picture of a group
 const editGroupImage = async (req, res) => {
     const group = await Groups.findOne({where: {id : req.params.groupId, userId: req.user.id}});
@@ -120,9 +129,8 @@ const editGroupImage = async (req, res) => {
     res.render('group-image', {
         pageTitle: `Edit Group Image: ${group.name}`,
         group
-    })
-
-}
+    });
+};
 const editImage = async (req, res, next) => {
     const group = await Groups.findOne({where: {id : req.params.groupId, userId: req.user.id}});
     // Group exist and is valid
@@ -130,7 +138,7 @@ const editImage = async (req, res, next) => {
         req.flash('error', 'You do not have permission to do that.');
         res.redirect('/login');
         return next();
-    }
+    };
 /*     // Verify new file
     if(req.file){
         console.log(req.file.filename);
@@ -148,29 +156,29 @@ const editImage = async (req, res, next) => {
                 console.log(err);
             }
             return;
-        })
-    }
+        });
+    };
     // If theres a new image, save it.
     if(req.file){
         group.image = req.file.filename;
-    }
+    };
     await group.save();
     req.flash('success', 'Image Saved Successfully!');
-    res.redirect('/admin')
-}
+    res.redirect('/admin');
+};
 
-// Form for delete group
+// Delete group form
 const groupDeleteForm = async (req, res, next) => {
     const group = await Groups.findOne({where: {id : req.params.groupId, userId: req.user.id}});
     if(!group){
         req.flash('error', 'You do not have permission to do that.');
         res.redirect('/login');
         return next();
-    }
+    };
     res.render('delete-group', {
         pageTitle: `Delete Group: ${group.name}`
-    })
-}
+    });
+};
 // Delete the group with their image
 const deleteGroup = async (req, res, next) => {
     const group = await Groups.findOne({where: {id : req.params.groupId, userId: req.user.id}});
@@ -199,6 +207,6 @@ const deleteGroup = async (req, res, next) => {
     req.flash('success', 'Group Deleted Successfully!');
     res.redirect('/admin');
 
-}
+};
 
-export {groupController, createGroup, uploadImage, groupEditForm, editGroup, editGroupImage, editImage, groupDeleteForm, deleteGroup}
+export {groupController, createGroup, uploadImage, groupEditForm, editGroup, editGroupImage, editImage, groupDeleteForm, deleteGroup};

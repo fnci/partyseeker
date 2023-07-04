@@ -41,6 +41,7 @@ import adminPanel from "../controllers/adminController.js";
 import authUser from "../controllers/authUser.js";
 import {showParty, confirmAssistance, showAttendees} from '../controllers/frontend/partyseekerController.js'
 import {showUser} from '../controllers/frontend/usersController.js'
+import {showGroup} from '../controllers/frontend/groupsController.js'
 
 
 const routes = () => {
@@ -62,6 +63,10 @@ const routes = () => {
   // Show user profile
   router.get('/users/:id',
     showUser
+  );
+  // Show profile group
+  router.get('/groups/:id',
+    showGroup
   );
   // Create and confirm account
   router.get("/signup", signupForm);

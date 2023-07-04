@@ -42,20 +42,26 @@
             </form>
             <!-- <a href="#" class="btn btn-blue">Yes</a> -->
             <% } else { %>
-                <p>Sign in to confirm your attendance</p>
+                <p class="msg-signin">Sign in to confirm your attendance</p>
             <% } %>
         </div>
     </div>
 </div>
 <main class="party-content">
-    <div class="container">
+    <div class="container party-container">
         <!-- Party Info -->
         <div class="party-info">
             <div class="description">
                 <!-- Party Picture -->
-                <img src="/uploads/parties/<%= party.image %>" alt="">
+                <% if(party.image){ %>
+                    <img src="/uploads/parties/<%= party.image %>" alt="Party Image">
+                <% } else { %>
+                    <img src="/img/vintagepartyseeker.png" alt="Vintage PartySeeker Image">
+                <% } %>
                 <!-- Description -->
-                <%- party.description %>
+                <div class="text">
+                    <%- party.description %>
+                </div>
             </div>
             <!-- Assistants -->
             <div class="assistants">
@@ -93,7 +99,7 @@
                         <textarea name="comment" id="comment"></textarea>
                     </div>
                     <div class="field send">
-                        <input type="submit" value="Send" class="btn btn-pink">
+                        <input type="submit" value="Send" class="btn btn-send btn-lake">
                     </div>
                 </form>
             </div>

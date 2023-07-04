@@ -1,13 +1,15 @@
 <main class="assistants container">
-    <h1><%= pageTitle %></h1>
+    <h1 class="page-title"><%= pageTitle %></h1>
     <div class="user-info">
-        <div class="image">
-            <% if(users.image){ %>
-                <img src="/uploads/profiles/<%= users.image %>" alt="Profile Picture">
-            <% } %>
-        </div>
-        <div class="text">
-            <%- users.description %>
+        <div class="profile-user">
+            <div class="profile-image">
+                <% if(users.image){ %>
+                    <img src="/uploads/profiles/<%= users.image %>" alt="Profile Picture">
+                <% } %>
+            </div>
+            <div class="text">
+                <%- users.description %>
+            </div>
         </div>
         <div class="party-info">
             <% if(parties.length > 0){ %>
@@ -19,7 +21,7 @@
                                 <% if(party.image){ %>
                                     <img src="/uploads/parties/<%= party.image %>" alt="Party Image">
                                 <% } else { %>
-                                    <img src="/img/holdingballoons.jpg" alt="Holding Balloons Image">
+                                    <img src="/img/vintagepartyseeker.png" alt="Vintage PartySeeker Image">
                                 <% } %>
                             </div>
 
@@ -43,11 +45,11 @@
                                 <% if(group.image){ %>
                                     <img src="/uploads/groups/<%= group.image %>" alt="Group Image">
                                 <% } else { %>
-                                    <img src="/img/group.jpg" alt="Group Image">
+                                    <img src="/img/vintageblack.png" alt="Vintage PartySeeker Black Logo">
                                 <% } %>
                             </div>
                             <div class="text">
-                                <a href="/groups/<%= group.name %>">
+                                <a href="/groups/<%= group.id %>">
                                     <h3><%= group.name %></h3>
                                 </a>
                             </div>

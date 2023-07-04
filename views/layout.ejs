@@ -21,7 +21,7 @@
 <body>
     <header class="container site-header">
         <a  class="header-logo" href="/">
-            <img src="/img/PartySeeker.png" alt="Logo PartySeeker">
+            <img src="/img/balloonslogo.png" alt="Logo PartySeeker">
         </a>
 
         <nav class="nav">
@@ -46,7 +46,9 @@
 
     <%-body%>
     <footer class="container site-footer">
+        <a  class="header-logo" href="/">
         <img class="ps-logo" src="/img/PartySeekerYP.png" alt="Copyright Logo">
+        </a>
         <nav class="nav">
             <% if(locals.user.id) { %>
                 <%- include ('partials/auth-footer.ejs') %>

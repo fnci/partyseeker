@@ -1,6 +1,6 @@
 <main class="container forms-container">
     <h1><%- pageTitle %></h1>
-    <form class="default-form" action="/new-party" method="POST" enctype="multipart/form-data">
+    <form class="default-form new-party" action="/new-party" method="POST" enctype="multipart/form-data">
         <legend>About the party</legend>
         <div class="field">
             <label>Title<span>&#42;</span></label>
@@ -59,7 +59,7 @@
                 <trix-editor input="x"></trix-editor>
             </div>
         </div>
-        <div class="img-btn">
+        <div class="img-btn" >
             <label>Picture</label>
             <input type="file" name="image">
         </div>
