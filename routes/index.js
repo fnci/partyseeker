@@ -39,7 +39,7 @@ import {
 } from "../controllers/groupController.js";
 import adminPanel from "../controllers/adminController.js";
 import authUser from "../controllers/authUser.js";
-import {showParty, confirmAssistance, showAttendees} from '../controllers/frontend/partyseekerController.js'
+import {showParty, confirmAssistance, showAttendees, showCategory} from '../controllers/frontend/partyseekerController.js'
 import {showUser} from '../controllers/frontend/usersController.js'
 import {showGroup} from '../controllers/frontend/groupsController.js'
 
@@ -68,6 +68,10 @@ const routes = () => {
   router.get('/groups/:id',
     showGroup
   );
+  // Show Parties by Category
+  router.get('/category/:category',
+    showCategory
+);
   // Create and confirm account
   router.get("/signup", signupForm);
   router.post("/signup", createNewAccount);

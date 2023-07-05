@@ -126,7 +126,7 @@ const editParty = async(req, res, next) => {
     return next();
  }
  // Assign value
- const {title,host,date,hour,attendance,description,url,address,city,state,country,lat,lng, groupId} = req.body;
+ const {title,host,date,hour,attendance,description,url,address,city,state,country,lat,lng,categoryId,userId,groupId} = req.body;
     party.title = title;
     party.host = host;
     party.date = date;
@@ -138,6 +138,8 @@ const editParty = async(req, res, next) => {
     party.city = city;
     party.state = state;
     party.country = country;
+    party.categoryId = categoryId;
+    party.userId = userId;
     party.groupId = groupId;
     // Assign point of location
     const point = { type: 'point', coordinates: [parseFloat(lat), parseFloat(lng)]}

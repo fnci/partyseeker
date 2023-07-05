@@ -1,6 +1,7 @@
 import Party from '../../models/party.js';
 import Users from '../../models/users.js';
 import Groups from '../../models/groups.js';
+import Categories from '../../models/categories.js';
 import {Sequelize} from 'sequelize';
 import moment from 'moment';
 
@@ -70,7 +71,39 @@ const showAttendees = async(req, res) => {
         assistants
     });
 }
+// Show parties by categories
+const showCategory = async(req, res, next) => {
+    const category = await Categories.findOne({
+        attributes: ['id', 'name'],
+        where: { slug: req.params.category}
+    });
+    if(!category) {
+        res.redirect('/');
+        return next();
+    }
+    const parties = await Party.findAll({
+        where: { categoryId: category.id },
+        include: [
+            {
+                model: Groups
+            },
+            {
+                model: Users
+            }
+        ]
+    });
+
+    if(!parties) {
+        res.redirect('/admin');
+        return next();
+    }
+    res.render('category', {
+        pageTitle: `Category: ${category.name}`,
+        parties,
+        moment
+    });
+
+}
 
 
-
-export {showParty, confirmAssistance, showAttendees}
+export {showParty, confirmAssistance, showAttendees, showCategory}

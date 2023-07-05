@@ -414,6 +414,7 @@ box-shadow: 0px 1px 2px 0px rgba(255,255,255,0.35);
 .grid {
     display: grid;
     grid-column-gap: 2rem;
+    justify-content: center;
 }
 .columns-2 {
     grid-template-columns: repeat(2, 1fr);
@@ -442,17 +443,18 @@ box-shadow: 0px 0px 54px 1px rgba(254,255,219,1);
     border-radius: 0.65rem;
 }
 .card .card-text {
-    padding: 0.5rem 1rem 1.5rem 1rem;
+    margin: 0 auto;
+    padding: 0.5rem 0.5rem 0rem 0.5rem;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    min-height: 250px;
+    /* min-height: 250px; */
 }
 .card h3,
 .info-admin h3 {
     font-size: 1.8rem;
     font-weight: 700;
-    margin: 0.8rem 0;
+    margin: 0.8rem auto;
     color: #1f1f1f;
     text-align: -webkit-auto;
 }
@@ -468,7 +470,6 @@ box-shadow: 0px 0px 54px 1px rgba(254,255,219,1);
 .card .date,
 .info-admin .date {
     font-family: 'Urbanist', sans-serif;
-    margin-bottom: 0.1rem;
 }
 .card p {
     margin: 0;
@@ -487,6 +488,7 @@ box-shadow: 0px 0px 54px 1px rgba(254,255,219,1);
     display: flex;
     justify-content: space-around;
     align-items: center;
+    margin-bottom: 0.5rem;
 }
 .info-author .info {
     flex: 1;
@@ -494,8 +496,8 @@ box-shadow: 0px 0px 54px 1px rgba(254,255,219,1);
 }
 
 .info-author .image img{
-   width: 8rem;
-   height: 8rem;
+   width: 6rem;
+   height: 6rem;
    border-radius: 50%;
    object-fit: cover;
    filter: drop-shadow(0 0 0.25rem rgba(0, 0, 0, 0.734));
@@ -1247,7 +1249,7 @@ trix-toolbar .trix-button--icon-strike {
     display: flex;
     justify-content: space-between;
     flex-wrap: wrap;
-    margin: 0 auto;
+    margin: 0 auto;vfgpg
 }
 .groups-list li{
     flex: 0 0 calc(50% - 1rem);
@@ -1436,3 +1438,6 @@ div .description h1{
         margin-top: 1rem;
     }
 } */
+.category-party{
+    text-align: center;
+}
