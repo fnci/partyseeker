@@ -17,7 +17,6 @@ function confirmAssistance(e){
         message.removeChild(message.firstChild);
     }
     // Get hidden value
-
     const data = {
         check
     }

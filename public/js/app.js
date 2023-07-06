@@ -1,5 +1,6 @@
 import { OpenStreetMapProvider } from 'leaflet-geosearch';
 import assistance from './assistance.js';
+import deleteComment from './deleteComment.js';
 
 // Get data from db
 const geoApiKey = process.env.GEOAPIFY_API_KEY;

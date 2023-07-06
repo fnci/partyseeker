@@ -39,9 +39,10 @@ import {
 } from "../controllers/groupController.js";
 import adminPanel from "../controllers/adminController.js";
 import authUser from "../controllers/authUser.js";
-import {showParty, confirmAssistance, showAttendees, showCategory} from '../controllers/frontend/partyseekerController.js'
-import {showUser} from '../controllers/frontend/usersController.js'
-import {showGroup} from '../controllers/frontend/groupsController.js'
+import {showParty, confirmAssistance, showAttendees, showCategory} from '../controllers/frontend/partyseekerController.js';
+import {showUser} from '../controllers/frontend/usersController.js';
+import {showGroup} from '../controllers/frontend/groupsController.js';
+import {addComment, deleteComment} from '../controllers/frontend/commentsController.js';
 
 
 const routes = () => {
@@ -49,29 +50,21 @@ const routes = () => {
   /* Public */
   router.get("/", home);
   // Show a Party
-  router.get('/party/:slug',
-    showParty
-  );
+  router.get('/party/:slug', showParty);
   // Confirm party assistance
-  router.post('/confirm-assistance/:slug',
-    confirmAssistance
-  );
+  router.post('/confirm-assistance/:slug', confirmAssistance);
   // Show attendees.
-  router.get('/assistants/:slug',
-    showAttendees
-  )
+  router.get('/assistants/:slug', showAttendees);
+  // Comments
+  router.post('/party/:id', addComment);
+  // Delete Comment
+  router.post('/delete-comment', deleteComment);
   // Show user profile
-  router.get('/users/:id',
-    showUser
-  );
+  router.get('/users/:id', showUser);
   // Show profile group
-  router.get('/groups/:id',
-    showGroup
-  );
+  router.get('/groups/:id', showGroup);
   // Show Parties by Category
-  router.get('/category/:category',
-    showCategory
-);
+  router.get('/category/:category', showCategory);
   // Create and confirm account
   router.get("/signup", signupForm);
   router.post("/signup", createNewAccount);
@@ -84,7 +77,6 @@ const routes = () => {
 
 
   /* Private */
-
   // Administration panel
   router.get("/admin", authUser, adminPanel);
   // New Group
@@ -99,7 +91,6 @@ const routes = () => {
   // Delete Groups
   router.get("/delete-group/:groupId", authUser, groupDeleteForm);
   router.post("/delete-group/:groupId", authUser, deleteGroup);
-
   // New Party
   router.get("/new-party", authUser, partyController);
   router.post("/new-party", authUser, uploadPartyImage, createParty);

@@ -80,6 +80,9 @@ p {
     font-weight: 300;
     line-height: 1.5;
 }
+blockquote {
+    margin: 0 auto;
+}
 input {
     font-family: 'Urbanist', sans-serif;
     letter-spacing: .2rem;
@@ -305,14 +308,14 @@ box-shadow: 0px 1px 2px 0px rgba(255,255,255,0.35);
 }
 /* Color buttons */
 .btn-yellow {
-    background-color: rgb(237, 213, 0);
-    background: rgb(237, 213, 0);
-    background: linear-gradient(0deg, rgba(237, 213, 0, 1) 0%, rgba(233, 215, 54,1) 100%);
+    background-color: rgb(255, 247, 0);
+    background: rgb(255, 247, 0);
+    background: linear-gradient(0deg, rgba(255, 247, 0, 1) 0%, rgb(244, 216, 0,1) 100%);
 }
 .btn-yellow:hover {
-    background-color: rgb(255, 217, 0);
-    background: rgb(255, 217, 0);
-    background: linear-gradient(0deg, rgba(255, 217, 0,1) 0%, rgba(255, 235, 57,1) 100%);
+    background-color: rgb(251, 255, 4);
+    background: rgb(251, 255, 4);
+    background: linear-gradient(0deg, rgba(255, 242, 58,1) 0%, rgba(254, 239, 17,1) 100%);
 }
 .btn-pink {
     background-color: rgb(223, 0, 149);
@@ -366,12 +369,12 @@ box-shadow: 0px 1px 2px 0px rgba(255,255,255,0.35);
 .btn-purple {
     background-color: rgb(106, 0, 228);
     background: rgb(106, 0, 228);
-    background: linear-gradient(0deg, rgba(106, 0, 228,1) 0%,rgba(131, 51, 223,1)100%);
+    background: linear-gradient(0deg, rgba(106, 0, 228,1) 0%,rgba(131, 51, 223,1) 100%);
 }
 .btn-purple:hover {
     background-color: rgb(117, 24, 255);
     background: rgb(117, 24, 255);
-    background: linear-gradient(0deg, rgba(117, 24, 255,1) 0%,rgba(136, 57, 255,1)  100%);
+    background: linear-gradient(0deg, rgb(119, 23, 255,1) 0%,rgb(151, 82, 253,1)  100%);
 }
 .btn-red {
     background-color: rgb(209, 14, 0);
@@ -404,11 +407,16 @@ box-shadow: 0px 1px 2px 0px rgba(255,255,255,0.35);
     color: white;
     box-shadow: none;
 }
+.delete-comment-btn {
+    font-size: 1rem;
+    margin-top: 1rem;
+    padding: 0.8rem 2rem 0.5rem 2rem;
+}
 .btn-login {
     padding: 1rem 2rem;
 }
 .btn-send {
-    padding: 1rem 2rem;
+    padding: 0.3rem 2rem 0rem 2rem;
 }
 /** Grid **/
 .grid {
@@ -453,15 +461,18 @@ box-shadow: 0px 0px 54px 1px rgba(254,255,219,1);
 .card h3,
 .info-admin h3 {
     font-size: 1.8rem;
-    font-weight: 700;
-    margin: 0.8rem auto;
+    margin: 0.8rem auto 0.8rem auto;
     color: #1f1f1f;
     text-align: -webkit-auto;
+    word-break: break-word;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 @media (max-width:768px) {
     .card h3,
     .info-admin h3 {
+    font-size: 1.7rem;
     word-break: break-word;
     overflow: hidden;
     text-overflow: ellipsis;
@@ -470,6 +481,12 @@ box-shadow: 0px 0px 54px 1px rgba(254,255,219,1);
 .card .date,
 .info-admin .date {
     font-family: 'Urbanist', sans-serif;
+    margin-bottom: 0rem;
+    margin-top: 0.8rem;
+}
+.card .date,
+.info-admin .date:first-child{
+    margin-top: 2rem;
 }
 .card p {
     margin: 0;
@@ -494,10 +511,14 @@ box-shadow: 0px 0px 54px 1px rgba(254,255,219,1);
     flex: 1;
     margin-left: 2rem;
 }
-
+@media (min-width:768px) {
+    .info-author .info {
+        margin-right: 2rem;
+    }
+}
 .info-author .image img{
-   width: 6rem;
-   height: 6rem;
+   width: 8rem;
+   height: 8rem;
    border-radius: 50%;
    object-fit: cover;
    filter: drop-shadow(0 0 0.25rem rgba(0, 0, 0, 0.734));
@@ -513,6 +534,9 @@ box-shadow: 0px 0px 54px 1px rgba(254,255,219,1);
 }
 .info-author a {
     font-size: 1.2rem;
+    word-break: break-word;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 /** layout**/
@@ -856,6 +880,7 @@ main.forms-container {
 }
 .default-form.comments .field {
     align-items: flex-start;
+    max-width: 752px;
 }
 .default-form .field textarea {
     height: 10rem;
@@ -961,15 +986,21 @@ trix-toolbar .trix-button--icon-strike {
     font-weight: 700;
 }
 .info-admin {
-    flex: 0 0 35%;
-    margin-right: 2rem;
     margin-bottom: 1rem;
-    /* margin-top: 1rem; */
+}
+@media (min-width:768px) {
+    .info-admin {
+        flex: 0 0 35%;
+        margin-right: 2rem;
+        margin-bottom: 0.7rem;
+        /* margin-top: 1rem; */
+    }
 }
 .info-admin small {
     font-family: 'Urbanist', sans-serif;
     font-weight: 700;
-    font-size: .8rem;
+    font-size: 1rem;
+    color: #ff00ca;
 }
 .actions.container-buttons a {
     flex: 1;
@@ -1002,6 +1033,15 @@ trix-toolbar .trix-button--icon-strike {
     word-break: break-word;
     overflow: hidden;
     text-overflow: ellipsis;
+}
+@media (max-width:768px) {
+    .party-summary h1 {
+        text-align: center;
+        font-size: 1.7rem;
+        word-break: break-word;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
 }
 /** Asistencia **/
 
@@ -1117,25 +1157,33 @@ trix-toolbar .trix-button--icon-strike {
 
 .comment {
     display: flex;
+    align-items: flex-start;
     margin-bottom: 2rem;
 }
-.comment .image {
-    flex: 0 0 80px;
-    height: 80px;
-    background-color: #333;
+.comment .comment-image img{
+    /* flex: 0 0 80px; */
+    margin-right: 1rem;
+    width: 6rem;
+    height: 6rem;
     border-radius: 50%;
-    margin-right: 2rem;
+    object-fit: cover;
+    /* filter: drop-shadow(0 0 0.25rem rgba(0, 0, 0, 0.734)); */
+    /* background-color: #31d000; */
 }
 .comment .text {
-    padding: 2rem;
-    border: 1px solid #C7C7C7;
+    flex: 1;
+    padding: 1rem;
+    border: 1px solid #d8d8d8;
     border-radius: 0.5rem;
     background-color: rgb(255, 255, 255);
+    font-size: 1.2rem;
+    word-break: break-word;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 .comment .text p {
     margin: 0;
 }
-
 /* User Profile Info */
 
 .user-info,
@@ -1231,7 +1279,7 @@ trix-toolbar .trix-button--icon-strike {
     justify-content: space-between;
     flex-wrap: wrap;
     align-content: space-around;
-    align-items: flex-end;
+    align-items: stretch;
 }
 .parties-list li{
     flex: 0 0 calc(50% - 1rem);
@@ -1277,11 +1325,14 @@ trix-toolbar .trix-button--icon-strike {
     border: 1px solid #C7C7C7;
 }
 .party-content aside > div {
-    padding: 1rem  0 0rem 5rem;
+    padding: 1rem  0 1rem 5rem;
     background-size: 70px;
     background-position: left;
     background-repeat: no-repeat;
-    margin: 1rem;
+    margin: 1.2rem;
+}
+.party-content aside > div:first-child {
+    padding: 1rem  0 1rem 5rem;
 }
 .party-content aside  p {
     margin: 0;
@@ -1302,11 +1353,12 @@ trix-toolbar .trix-button--icon-strike {
         border: 1px solid #C7C7C7;
     }
     .party-content aside > div {
-        padding: 0rem  0 0rem 5rem;
+        padding: 1rem  0 1rem 5rem;
         background-size: 60px;
         background-position: left;
         background-repeat: no-repeat;
-        margin: 1.5rem;
+        margin: 1rem;
+        margin-left: 1.5rem;
     }
     .party-content aside  p {
         margin: 0;
@@ -1412,16 +1464,17 @@ div .description h1{
 }
 .description .text{
         margin: 1rem auto;
-        line-height: 1.5;
+        line-height: 1.4;
         font-size: 1.2rem;
         font-weight: 400;
         word-break: break-word;
         overflow: hidden;
         text-overflow: ellipsis;
+        text-align: center;
 }
 #message {
-    margin-top: 1rem;
-    margin-bottom: -3rem;
+    margin: 1rem auto -3rem auto;
+    text-align: center;
 }
 @media (max-width:768px) {
     #message {
@@ -1440,4 +1493,22 @@ div .description h1{
 } */
 .category-party{
     text-align: center;
+}
+.comments .sign-in-to-comment{
+    font-weight: 300;
+    color:rgb(0, 0, 0);
+    text-align: end;
+    font-size: 1rem;
+}
+.comments .no-comments-msg {
+    text-align: center;
+}
+
+.attendance-question .sign-in-to-confirm {
+    margin: -2rem 0.8rem;
+}
+@media (max-width:768px) {
+    .attendance-question .sign-in-to-confirm {
+        margin: 1rem 0.8rem;
+    }
 }

@@ -24,6 +24,8 @@ import Users from './models/users.js';
 await Users.sync();
 import Categories from "./models/categories.js";
 await Categories.sync();
+import Comments from "./models/comments.js";
+await Comments.sync();
 
 // Body parser
 app.use(bodyParser.json());

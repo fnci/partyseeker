@@ -42,7 +42,7 @@
             </form>
             <!-- <a href="#" class="btn btn-blue">Yes</a> -->
             <% } else { %>
-                <p class="msg-signin">Sign in to confirm your attendance</p>
+                <p class="sign-in-to-confirm">Sign in to confirm your attendance</p>
             <% } %>
         </div>
     </div>
@@ -73,26 +73,39 @@
             <!-- Comments -->
             <div class="comments">
                 <h2>Comments</h2>
-                <div class="comment">
-                    <div class="image">
-
+                <% if(comments.length > 0){ %>
+                    <% comments.forEach(comment => { %>
+                    <!--  <%= JSON.stringify(comment) %> -->
+                    <div class="comment">
+                        <div class="comment-image">
+                            <% if(comment.user.image){ %>
+                                <img src="/uploads/profiles/<%= comment.user.image %>" alt="Profile Picture">
+                            <% } else { %>
+                                <img src="/img/pinkgreenlogo.jpg" alt="Partyseeker Default Profile Picture">
+                            <% } %>
+                        </div>
+                        <div class="text">
+                            <p>Written by:
+                                <a href="/users/<%= comment.user.id %>">
+                                    <%= comment.user.name %>
+                                </a>
+                            </p>
+                            <p><%= comment.message %></p>
+                            <% if(comment.userId === user.id || party.userId === user.id) { %>
+                                <form action="/delete-comment" method="POST" class="delete-comment">
+                                    <input type="hidden" name="commentId" value="<%= comment.id %>">
+                                    <input type="submit" value="Delete" class="btn btn-red delete-comment-btn">
+                                </form>
+                            <% } %>
+                        </div>
                     </div>
-                    <div class="text">
-                        <p>Hi there</p>
-                        <p>Written by: <span>Francisco</span> </p>
-                        <input type="button" value="Delete" class="btn btn-blue">
-                    </div>
-                </div>
-                <div class="comment">
-                    <div class="image">
-
-                    </div>
-                    <div class="text">
-                        <p>Hi there</p>
-                        <p>Written by: <span>Francisco</span> </p>
-                    </div>
-                </div>
-                <form action="#" class="default-form comments">
+                    <% }); %>
+                <% } else { %>
+                    <p class="no-comments-msg">There are no comments yet.</p>
+                <% }; %>
+                <!-- Comments Form -->
+                <% if(user.id){ %>
+                <form action="/party/<%= party.id %>" method="POST" class="default-form comments">
                     <legend>Add a comment</legend>
                     <div class="field">
                         <label for="comment">Comment</label>
@@ -102,6 +115,9 @@
                         <input type="submit" value="Send" class="btn btn-send btn-lake">
                     </div>
                 </form>
+                <% } else { %>
+                    <p class="sign-in-to-comment">Sign in to add a comment</p>
+                <% } %>
             </div>
 
         </div>

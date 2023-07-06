@@ -2,6 +2,7 @@ import Party from '../../models/party.js';
 import Users from '../../models/users.js';
 import Groups from '../../models/groups.js';
 import Categories from '../../models/categories.js';
+import Comments from '../../models/comments.js';
 import {Sequelize} from 'sequelize';
 import moment from 'moment';
 
@@ -27,12 +28,23 @@ const showParty = async(req, res, next) => {
         res.redirect('/');
         return next();
     }
+    // Add the comments
+    const comments = await Comments.findAll({
+        where: { partyId: party.id},
+        include: [
+            {
+                model: Users,
+                attributes: ['id', 'name', 'image']
+            }
+        ]
+    });
     // Pass the result to the view
     res.render('show-party', {
         pageTitle: party.title,
         party,
+        comments,
         moment
-    })
+    });
 }
 // Confirm or negate the assistance of the user to the party
 const confirmAssistance = async(req, res) => {
