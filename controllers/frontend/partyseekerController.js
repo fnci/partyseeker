@@ -4,6 +4,7 @@ import Groups from '../../models/groups.js';
 import Categories from '../../models/categories.js';
 import Comments from '../../models/comments.js';
 import {Sequelize} from 'sequelize';
+import {Op} from 'sequelize';
 import moment from 'moment';
 
 
@@ -28,6 +29,32 @@ const showParty = async(req, res, next) => {
         res.redirect('/');
         return next();
     }
+    // Check nearby parties
+    const location = Sequelize.literal(`ST_GeomFromText('POINT(${party.location.coordinates[0]} ${party.location.coordinates[1]})')`);
+    // Calculate distance of the others parties based on the location of the current party and return the meters in distance.
+    const distance = Sequelize.fn('ST_DistanceSphere', Sequelize.col('location'), location);
+    // Find nearby parties, nearest first
+    const nearbyParties = await Party.findAll({
+        where: {
+            [Op.and]: [
+                {date: {[Op.gte]: moment(new Date()).format('YYYY-MM-DD')}},
+                Sequelize.where(distance, {[Op.lte] : 5000})
+            ]
+        }, // 5km
+        order: [distance],
+        offset: 1,
+        limit: 3, // max 3 nearest parties
+        include: [
+            {
+                model: Users,
+                attributes: ['id', 'name', 'image']
+            },
+            {
+                model: Groups
+            }
+        ]
+    });
+    /* console.log(nearbyParties); */
     // Add the comments
     const comments = await Comments.findAll({
         where: { partyId: party.id},
@@ -43,6 +70,7 @@ const showParty = async(req, res, next) => {
         pageTitle: party.title,
         party,
         comments,
+        nearbyParties,
         moment
     });
 }

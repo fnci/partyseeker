@@ -140,3 +140,43 @@
         </aside>
     </div>
 </main>
+<h2 class="neonText">Nearby Parties</h2>
+<div class="container nearby">
+    <% if(nearbyParties.length > 0){ %>
+        <% nearbyParties.forEach(party => { %>
+            <div class="card">
+                <% if(party.image){ %>
+                    <img src="/uploads/parties/<%= party.image %>" alt="Party Image">
+                <% } else { %>
+                    <img src="/img/partyseekerblacklogo.png" alt="Vintage PartySeeker Image">
+                <% } %>
+                <div class="card-text">
+                    <% moment.locale('en') %>
+                    <% const date = `${party.date} ${party.hour}`%>
+                    <p class="date"><%= moment(date).format('LLLL')%></p>
+                    <p class="from-now"><%= moment(date).fromNow()%></p>
+                    <a href="/party/<%= party.slug %>">
+                        <h3><%= party.title %></h3>
+                    </a>
+                    <div class="info-author">
+                        <div class="information">
+                            <p>Organized by:</p>
+                            <p class="author"><%= party.user.name %></p>
+                        </div>
+                        <% if(party.user.image){ %>
+                            <div class="image">
+                                <img src="/uploads/profiles/<%= party.user.image %>" alt="Profile Picture of <%= party.user.name %>">
+                            </div>
+                        <% } else { %>
+                            <div class="image">
+                                <img src="/img/pinkandyellow.png" alt="Pink and Yellow PartySeeker Letters">
+                            </div>
+                        <% } %>
+                    </div>
+                </div>
+            </div>
+        <% }) %>
+    <% } else { %>
+        <p>There are no parties nearby.</p>
+    <% } %>
+</div>

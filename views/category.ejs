@@ -4,18 +4,16 @@
         <div class="container grid columns-md-3">
             <% parties.forEach(party => { %>
                 <div class="card">
-                    <!-- <%= JSON.stringify(party)  %> -->
-                    <% if(party.image){ %>
-                        <img src="/uploads/parties/<%= party.image %>">
+                    <% if(party.image){ %>
+                        <img src="/uploads/parties/<%= party.image %>" alt="Party Image">
                     <% } else { %>
-                        <img src="/img/partyseekerblacklogo.png">
+                        <img src="/img/partyseekerblacklogo.png" alt="Vintage PartySeeker Image">
                     <% } %>
                     <div class="card-text">
-
-                                    <% const date = `${party.date} ${party.hour}`%>
-                                    <p class="date"><%= moment(date).format('LLLL')%></p>
-                                    <p class="from-now"><%= moment(date).fromNow()%></p>
-
+                        <% moment.locale('en') %>
+                        <% const date = `${party.date} ${party.hour}`%>
+                        <p class="date"><%= moment(date).format('LLLL')%></p>
+                        <p class="from-now"><%= moment(date).fromNow()%></p>
                         <a href="/party/<%= party.slug %>">
                             <h3><%= party.title %></h3>
                         </a>
@@ -24,13 +22,13 @@
                                 <p>Organized by:</p>
                                 <p class="author"><%= party.user.name %></p>
                             </div>
-                            <% if(party.user){ %>
+                            <% if(party.user.image){ %>
                                 <div class="image">
                                     <img src="/uploads/profiles/<%= party.user.image %>" alt="Profile Picture of <%= party.user.name %>">
                                 </div>
                             <% } else { %>
                                 <div class="image">
-                                    <img src="/img/pinkgreenlogo.png" alt="Pink and Yellow PartySeeker Letters">
+                                    <img src="/img/pinkandyellow.png" alt="Pink and Yellow PartySeeker Letters">
                                 </div>
                             <% } %>
                         </div>

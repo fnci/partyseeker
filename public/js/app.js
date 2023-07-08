@@ -99,7 +99,7 @@ const searchLocation= function(e){
 
 
 function fillInput(foundAddress) {
-    console.log(foundAddress);
+    /* console.log(foundAddress); */
     document.querySelector('#address').value = foundAddress.properties.address_line1 || '';
     document.querySelector('#city').value = foundAddress.properties.city || '';
     document.querySelector('#state').value = foundAddress.properties.state || '';

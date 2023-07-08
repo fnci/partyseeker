@@ -4,7 +4,7 @@
         <legend>About the party</legend>
         <div class="field">
             <label>Title</label>
-            <input type="text" name="title" placeholder="Party Title" value="<%= party.title %>">
+            <input type="text" name="title" placeholder="Party Title" maxlength="32" value="<%= party.title %>">
         </div>
         <div class="field">
             <label>Category</label>
@@ -21,7 +21,7 @@
         </div>
         <div class="field">
             <label>Host</label>
-            <input type="text" name="host" placeholder="Host Name" value="<%= party.host %>">
+            <input type="text" name="host" placeholder="Host Name" maxlength="32"value="<%= party.host %>">
         </div>
         <div class="field">
             <label>Website</label>

@@ -235,6 +235,29 @@ box-shadow: 0px 1px 7px 0px rgba(255,255,255,0.35);
         0 0 35px #ff00a2, 0 0 40px #ffffff, 0 0 50px #ffffff, 0 0 75px #ff00d0;
     }
 }
+/* Neon Green */
+.neonText {
+    text-transform: uppercase;
+    font-size: 3rem;
+    color: #fff;
+    animation: neon2 1.2s ease-in-out infinite alternate;
+}
+@keyframes neon2 {
+    from {
+        text-shadow:
+        0 0 7px #fff,
+        0 0 10px #fff,
+        0 0 21px #fff,
+        0 0 42px #0fa,
+    }
+    to {
+      text-shadow:
+      0 0 82px #0fa,
+      0 0 92px #0fa,
+      0 0 102px #0fa,
+      0 0 151px #0fa;
+    }
+}
 
 /* glow on button */
 .glow-on-hover {
@@ -451,19 +474,29 @@ box-shadow: 0px 0px 54px 1px rgba(254,255,219,1);
     border-radius: 0.65rem;
 }
 .card .card-text {
-    margin: 0 auto;
-    padding: 0.5rem 0.5rem 0rem 0.5rem;
+    margin: auto 1rem;
+    padding: 0rem 0.5rem 0rem 0.5rem;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    /* min-height: 250px; */
+    min-height: 300px;
 }
-.card h3,
-.info-admin h3 {
+.card h3 {
     font-size: 1.8rem;
-    margin: 0.8rem auto 0.8rem auto;
+    margin: 0.8rem auto 0.2rem auto;
     color: #1f1f1f;
-    text-align: -webkit-auto;
+    text-align: center;
+    text-transform: capitalize;
+    word-break: break-word;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.info-admin h3 {
+    font-size: 1.5rem;
+    margin: 0.8rem auto/*  0.2rem auto */;
+    color: #1f1f1f;
+    text-align: left;
+    text-transform: capitalize;
     word-break: break-word;
     overflow: hidden;
     text-overflow: ellipsis;
@@ -484,10 +517,10 @@ box-shadow: 0px 0px 54px 1px rgba(254,255,219,1);
     margin-bottom: 0rem;
     margin-top: 0.8rem;
 }
-.card .date,
+/* .card .date,
 .info-admin .date:first-child{
     margin-top: 2rem;
-}
+} */
 .card p {
     margin: 0;
 }
@@ -503,9 +536,9 @@ box-shadow: 0px 0px 54px 1px rgba(254,255,219,1);
 } */
 .info-author {
     display: flex;
-    justify-content: space-around;
+    justify-content: space-between;
     align-items: center;
-    margin-bottom: 0.5rem;
+    /* margin-bottom: 0.5rem; */
 }
 .info-author .info {
     flex: 1;
@@ -523,6 +556,20 @@ box-shadow: 0px 0px 54px 1px rgba(254,255,219,1);
    object-fit: cover;
    filter: drop-shadow(0 0 0.25rem rgba(0, 0, 0, 0.734));
    /* background-color: #31d000; */
+}
+.card .info-author .image img{
+    width: 6rem;
+    height: 6rem;
+    border-radius: 50%;
+    object-fit: cover;
+    filter: drop-shadow(0 0 0.25rem rgba(139, 139, 139, 0));
+    margin: 1rem auto;
+}
+@media (max-width:768px) {
+    .card .info-author .image img{
+        width: 6rem;
+        height: 6rem;
+    }
 }
 .info-author .author a {
     font-size: 1.3rem;
@@ -824,7 +871,9 @@ main.forms-container {
     align-items: baseline;
     margin: 1rem 0;
     flex-wrap: wrap;
-    justify-content: space-around;
+    justify-content: space-between;
+    word-break: break-word;
+    text-overflow: ellipsis;
 }
 
 .default-form .description {
@@ -1207,6 +1256,13 @@ trix-toolbar .trix-button--icon-strike {
     font-size: 1rem;
     font-weight: 500;
 }
+@media (min-width: 768px) {
+    .user-info .text h3 {
+        text-align: center;
+        font-size: 2rem;
+        font-weight: 500;
+    }
+}
 .group-info a.url {
     margin-top: 1rem;
     display: block;
@@ -1267,13 +1323,16 @@ trix-toolbar .trix-button--icon-strike {
     }
 }
 
-.group-info .text{
-    margin-top: 1rem;
+.group-info .text {
     word-break: break-word;
     overflow: hidden;
     text-overflow: ellipsis;
 }
-
+@media (max-width: 768px) {
+    .group-info .text {
+        margin-top: 1rem;
+    }
+}
 .parties-list  {
     display: flex;
     justify-content: space-between;
@@ -1292,6 +1351,16 @@ trix-toolbar .trix-button--icon-strike {
     overflow: hidden;
     text-overflow: ellipsis;
 }
+.parties-list .text a h3{
+    font-size: 1.8rem;
+    margin: 0.5rem auto auto auto;
+}
+@media (max-width: 768px) {
+    .parties-list .text a h3{
+        font-size: 1rem;
+        margin: 0 auto;
+    }
+}
 
 .groups-list  {
     display: flex;
@@ -1306,6 +1375,9 @@ trix-toolbar .trix-button--icon-strike {
 .groups-list .image img{
     aspect-ratio: 3/2;
 }
+.groups-list h3{
+    margin: 0 auto;
+}
 
 @media (min-width: 768px) {
     .parties-list li{
@@ -1313,7 +1385,6 @@ trix-toolbar .trix-button--icon-strike {
     }
     .groups-list li{
         flex: 0 0 calc(33.3% - 2rem);
-
     }
 }
 .parties-list .image img{
@@ -1439,7 +1510,11 @@ trix-toolbar {
     font-weight: 400;
     font-size: 1rem;
 }
-
+@media (max-width:768px) {
+    .information p{
+        font-size: 1rem;
+    }
+}
 .date-location-info {
     text-align: center;
     border-radius: 0.5rem;
@@ -1463,7 +1538,7 @@ div .description h1{
     font-size: 2rem;
 }
 .description .text{
-        margin: 1rem auto;
+        margin: 0rem auto 1rem auto ;
         line-height: 1.4;
         font-size: 1.2rem;
         font-weight: 400;
@@ -1481,6 +1556,11 @@ div .description h1{
         margin: 1rem auto;
         text-align: start;
     }
+}
+#group-select-text div{
+    display: flex;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 /* @media (max-width:768px) {
     .party-container {
@@ -1510,5 +1590,21 @@ div .description h1{
 @media (max-width:768px) {
     .attendance-question .sign-in-to-confirm {
         margin: 1rem 0.8rem;
+    }
+}
+.nearby p {
+    text-align: center;
+}
+
+@media (min-width: 768px) {
+    .nearby {
+        display: flex;
+        justify-content: space-around;
+    }
+    .nearby .card {
+        flex: 0 0 calc(33.3% - 2rem);
+    }
+    .nearby .information {
+        flex: 1;
     }
 }

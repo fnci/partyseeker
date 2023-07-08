@@ -27,7 +27,7 @@
     <h2 class="neon-pink">Upcoming Parties</h2>
     <div class="grid columns-md-3 ">
         <% if(parties.length > 0) {  %>
-            <% parties.forEach(party => { %>
+            <% parties.forEach((party) => { %>
                 <div class="card">
                     <% if(party.image){ %>
                         <img src="/uploads/parties/<%= party.image %>" alt="Party Image">
@@ -59,7 +59,7 @@
                         </div>
                     </div>
                 </div>
-            <% }); %>
+            <% }) %>
         <% } %>
     </div>
 </div>
