@@ -1,5 +1,6 @@
 import dotenv from 'dotenv';
-dotenv.config({ path: '.env' });
+import 'dotenv/config';
+dotenv.config();
 import express from "express";
 import bodyParser from "body-parser";
 import flash from "connect-flash";
@@ -18,12 +19,14 @@ const app = express();
 // dbModels & Config
 import db from "./config/db.js";
 db.sync().then(() => console.log("DB Connected")).catch((error) => console.log(error));
-import Groups from './models/groups.js';
-await Groups.sync();
 import Users from './models/users.js';
 await Users.sync();
 import Categories from "./models/categories.js";
 await Categories.sync();
+import Groups from './models/groups.js';
+await Groups.sync();
+import Party from './models/party.js';
+await Party.sync();
 import Comments from "./models/comments.js";
 await Comments.sync();
 
@@ -75,8 +78,10 @@ app.use((req, res, next) => {
 // Routing
 app.use('/', router());
 
+// Read host
+const host = process.env.HOST || '0.0.0.0';
 // Add port
 const port = process.env.PORT || 6000;
-app.listen(port, () => {
+app.listen(port, host, () => {
     console.log('listening on port')
 });

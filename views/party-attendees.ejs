@@ -6,6 +6,8 @@
             <li>
                 <% if(assistant.image){ %>
                     <img src="/uploads/profiles/<%=assistant.image%>" alt="Assistant Picture">
+                <% } else { %>
+                    <img src="/img/pinkgreenlogo.png" alt="Partyseeker Default Profile Picture">
                 <% } %>
                 <div class="text">
                     <%= assistant.name %>

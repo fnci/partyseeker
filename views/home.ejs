@@ -6,18 +6,55 @@
 <div class="container seeker-start">
     <div class="container">
         <h2>Search a party in your city</h2>
-        <form action="#">
+        <form action="/seeker" method="GET">
+            <input type="text" name="title" placeholder="Party title">
+            <input type="text" name="city" placeholder="City">
+            <select name="country" id="">
+                <option value="" selected> -Country- </option>
+                <option value="Antarctica">Antarctica</option>
+                <option value="Argentina">Argentina</option>
+                <option value="Austria">Austria</option>
+                <option value="Australia">Australia</option>
+                <option value="Belgium">Belgium</option>
+                <option value="Bhutan">Bhutan</option>
+                <option value="Brazil">Brazil</option>
+                <option value="Canada">Canada</option>
+                <option value="Chile">Chile</option>
+                <option value="China">China</option>
+                <option value="Croatia">Croatia</option>
+                <option value="Finland">Finland</option>
+                <option value="France">France</option>
+                <option value="Germany">Germany</option>
+                <option value="Greece">Greece</option>
+                <option value="Iceland">Iceland</option>
+                <option value="India">India</option>
+                <option value="Italia">Italia</option>
+                <option value="Japan">Japan</option>
+                <option value="Korea">Korea</option>
+                <option value="Luxembourg">Luxembourg</option>
+                <option value="Madagascar">Madagascar</option>
+                <option value="Mexico">Mexico</option>
+                <option value="New Zealand">New Zealand</option>
+                <option value="Norway">Norway</option>
+                <option value="Russia">Russia</option>
+                <option value="Spain">Spain</option>
+                <option value="Sri Lanka">Sri Lanka</option>
+                <option value="Sweden">Sweden</option>
+                <option value="Switzerland">Switzerland</option>
+                <option value="Thailand">Thailand</option>
+                <option value="Ukraine">Ukraine</option>
+                <option value="United Kingdom">United Kingdom</option>
+                <option value="United States">United States</option>
+                <option value="Vietnam">Vietnam</option>
+            </select>
             <select name="category">
-                    <option value="" disabled selected>-- Select Category --</option>
+                    <option value="" selected> -Category- </option>
                     <% categories.forEach( category => { %>
                         <option value="<%= category.id %>" <%= (category.categoryId === category.id) ? "selected" : '' %>
                         ><%= category.name %>
                         </option>
                     <% });%>
             </select>
-            <input type="text" name="name" placeholder="Party Name">
-            <input type="text" name="city" placeholder="City">
-            <input type="text" name="country" placeholder="Country">
             <input type="submit" value="search" class="search-party btn btn-green">
         </form>
     </div>
@@ -32,7 +69,7 @@
                     <% if(party.image){ %>
                         <img src="/uploads/parties/<%= party.image %>" alt="Party Image">
                     <% } else { %>
-                        <img src="/img/partyseekerblacklogo.png" alt="Vintage PartySeeker Image">
+                        <img src="/img/partyseekerblacklogo.png" alt="PartySeeker Black Logo">
                     <% } %>
                     <div class="card-text">
                         <% moment.locale('en') %>

@@ -7,9 +7,18 @@
             <input type="text" name="title" placeholder="Party Title" maxlength="32">
         </div>
         <div class="field">
+            <label>Host</label>
+            <input type="text" name="host" placeholder="Host Name" maxlength="32">
+        </div>
+        <div class="field">
+            <label>Website</label>
+            <input type="url" name="url" placeholder="Url">
+        </div>
+        <div class="columns-2 grid">
+        <div class="field">
             <label>Category</label>
             <select name="categoryId">
-                <option value="" selected disabled hidden>
+                <option value="" disabled selected hidden>
                     -- Select Category --
                 </option>
                 <% categories.forEach( category => { %>
@@ -20,23 +29,16 @@
             </select>
         </div>
         <div class="field">
-            <label>Host</label>
-            <input type="text" name="host" placeholder="Host Name" maxlength="32">
-        </div>
-        <div class="field">
-            <label>Website</label>
-            <input type="url" name="url" placeholder="Url">
-        </div>
-        <div class="field">
             <label>Group</label>
             <select name="groupId">
-                <option value="" disabled selected>-- Select Group --</option>
+                <option value="" disabled selected hidden>-- Select Group --</option>
                 <% if(groups.length > 0){ %>
                     <% groups.forEach(group => { %>
                         <option value="<%= group.id %>"><%= group.name %></option>
                     <% }) %>
                 <% } %>
             </select>
+        </div>
         </div>
         <div class="columns-2 grid">
             <div class="field">

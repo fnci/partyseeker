@@ -42,6 +42,7 @@ import authUser from "../controllers/authUser.js";
 import {showParty, confirmAssistance, showAttendees, showCategory} from '../controllers/frontend/partyseekerController.js';
 import {showUser} from '../controllers/frontend/usersController.js';
 import {showGroup} from '../controllers/frontend/groupsController.js';
+import searchResults from '../controllers/frontend/seekerController.js';
 import {addComment, deleteComment} from '../controllers/frontend/commentsController.js';
 
 
@@ -50,21 +51,23 @@ const routes = () => {
   /* Public */
   router.get("/", home);
   // Show a Party
-  router.get('/party/:slug', showParty);
+  router.get("/party/:slug", showParty);
   // Confirm party assistance
-  router.post('/confirm-assistance/:slug', confirmAssistance);
+  router.post("/confirm-assistance/:slug", confirmAssistance);
   // Show attendees.
-  router.get('/assistants/:slug', showAttendees);
+  router.get("/assistants/:slug", showAttendees);
   // Comments
-  router.post('/party/:id', addComment);
+  router.post("/party/:id", addComment);
   // Delete Comment
-  router.post('/delete-comment', deleteComment);
+  router.post("/delete-comment", deleteComment);
   // Show user profile
-  router.get('/users/:id', showUser);
+  router.get("/users/:id", showUser);
   // Show profile group
-  router.get('/groups/:id', showGroup);
+  router.get("/groups/:id", showGroup);
   // Show Parties by Category
-  router.get('/category/:category', showCategory);
+  router.get("/category/:category", showCategory);
+  // Seeker
+  router.get("/seeker", searchResults);
   // Create and confirm account
   router.get("/signup", signupForm);
   router.post("/signup", createNewAccount);

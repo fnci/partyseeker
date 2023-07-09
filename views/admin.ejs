@@ -24,7 +24,7 @@
                 <div class="actions container-buttons">
                     <a href="/edit-party/<%= py.id %>" class="btn btn-purple">Edit</a>
                     <a href="/party-image/<%= py.id %>" class="btn btn-blue">Picture</a>
-                    <a href="/party-attendance/<%= py.id %>" class="btn btn-yellow">Attendees</a>
+                    <a href="/assistants/<%= py.slug %>" class="btn btn-yellow">Assistants</a>
                     <a href="/delete-party/<%= py.id %>" class="btn btn-red">Delete</a>
                 </div>
             </li>
@@ -43,7 +43,9 @@
 
                 <li class="container-buttons">
                     <div class="info-admin">
+                        <a href="/groups/<%= group.id %>">
                         <h3><%= group.name %></h3>
+                        </a>
                     </div>
                     <div class="actions container-buttons">
                         <a href="/edit-group/<%= group.id %>" class="btn btn-purple">Edit</a>
@@ -74,7 +76,7 @@
                 <div class="actions container-buttons">
                     <a href="/edit-party/<%= py.id %>" class="btn btn-purple">Edit</a>
                     <a href="/party-image/<%= py.id %>" class="btn btn-blue">Picture</a>
-                    <a href="/party-attendance/<%= py.id %>" class="btn btn-yellow">Attendees</a>
+                    <a href="/assistants/<%= py.slug %>" class="btn btn-yellow">Assistants</a>
                     <a href="/delete-party/<%= py.id %>" class="btn btn-red">Delete</a>
                 </div>
             </li>

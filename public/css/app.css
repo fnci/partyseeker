@@ -238,27 +238,30 @@ box-shadow: 0px 1px 7px 0px rgba(255,255,255,0.35);
 /* Neon Green */
 .neonText {
     text-transform: uppercase;
+    font-weight: 500;
     font-size: 3rem;
-    color: #fff;
-    animation: neon2 1.2s ease-in-out infinite alternate;
+    color: #000000;
+	-webkit-text-stroke: #fff;
+	-webkit-text-stroke-width: 1px;
+	text-shadow: 0px 1px 5px #000000;
+	transition: all 0.5s ease-in-out;
+	text-align: center;
+	/* animation: neon2 0.5s ease-in-out infinite alternate; */
+    &:hover {
+		color: #fff;
+	}
 }
-@keyframes neon2 {
-    from {
-        text-shadow:
-        0 0 7px #fff,
-        0 0 10px #fff,
-        0 0 21px #fff,
-        0 0 42px #0fa,
-    }
-    to {
-      text-shadow:
-      0 0 82px #0fa,
-      0 0 92px #0fa,
-      0 0 102px #0fa,
-      0 0 151px #0fa;
-    }
+/* @keyframes neon2 {
+	0% {
+		opacity: 0.5;
+		text-shadow: 2px 2px 10px  #ffffff;
+	}
+	100% {
+		opacity: 1;
+		text-shadow: 2px 2px 20px  #ffffff;
+	}
 }
-
+ */
 /* glow on button */
 .glow-on-hover {
     width: 220px;
@@ -1575,9 +1578,9 @@ div .description h1{
     text-align: center;
 }
 .comments .sign-in-to-comment{
-    font-weight: 300;
-    color:rgb(0, 0, 0);
-    text-align: end;
+    font-weight: 500;
+    color:rgb(62, 0, 161);
+    text-align: center;
     font-size: 1rem;
 }
 .comments .no-comments-msg {
@@ -1594,6 +1597,7 @@ div .description h1{
 }
 .nearby p {
     text-align: center;
+    margin-top: 0;
 }
 
 @media (min-width: 768px) {

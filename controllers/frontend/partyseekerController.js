@@ -31,17 +31,14 @@ const showParty = async(req, res, next) => {
     }
     // Check nearby parties
     const location = Sequelize.literal(`ST_GeomFromText('POINT(${party.location.coordinates[0]} ${party.location.coordinates[1]})')`);
+    /* console.log(location); */
     // Calculate distance of the others parties based on the location of the current party and return the meters in distance.
     const distance = Sequelize.fn('ST_DistanceSphere', Sequelize.col('location'), location);
+    /* console.log(distance); */
     // Find nearby parties, nearest first
     const nearbyParties = await Party.findAll({
-        where: {
-            [Op.and]: [
-                {date: {[Op.gte]: moment(new Date()).format('YYYY-MM-DD')}},
-                Sequelize.where(distance, {[Op.lte] : 5000})
-            ]
-        }, // 5km
-        order: [distance],
+        order: distance,
+        where: Sequelize.where(distance, {[Op.lte] : 2000}), // 2km
         offset: 1,
         limit: 3, // max 3 nearest parties
         include: [
