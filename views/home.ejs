@@ -69,7 +69,7 @@
                     <% if(party.image){ %>
                         <img src="/uploads/parties/<%= party.image %>" alt="Party Image">
                     <% } else { %>
-                        <img src="/img/partyseekerblacklogo.png" alt="PartySeeker Black Logo">
+                        <img src="/img/partyseekerblacklogo.png" alt="PartySeeker Parties Black Logo">
                     <% } %>
                     <div class="card-text">
                         <% moment.locale('en') %>
@@ -90,7 +90,7 @@
                                 </div>
                             <% } else { %>
                                 <div class="image">
-                                    <img src="/img/pinkandyellow.png" alt="Pink and Yellow PartySeeker Letters">
+                                    <img src="/img/pinkandgreenprofilelogo.png" alt="Partyseeker Default Profile Picture">
                                 </div>
                             <% } %>
                         </div>
@@ -109,7 +109,7 @@
             <% categories.forEach( category => { %>
             <li>
                 <a href="/category/<%= category.slug %>">
-                    <img src="/img/category_<%= category.id %>.jpg">
+                    <img src="/img/category_<%= category.id %>.jpg" alt="Party category: <%= category.name %>">
                     <p><%= category.name %></p>
                 </a>
             </li>

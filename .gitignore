@@ -1,14 +1,13 @@
 # ignore present folders
 *.vscode
 # public folder
+uploads
+uploads/
+public/uploads/
 public/uploads/groups/*
 public/uploads/parties/*
 public/uploads/profiles/*
-public/uploads/
-public/uploads
-public/uploads/parties/
-public/uploads/groups/
-public/uploads/profiles/
+
 # does not ignore the README.md file
 !README.md
 # variables credentials

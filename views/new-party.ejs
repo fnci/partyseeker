@@ -4,7 +4,7 @@
         <legend>About the party</legend>
         <div class="field">
             <label>Title<span>&#42;</span></label>
-            <input type="text" name="title" placeholder="Party Title" maxlength="32">
+            <input type="text" name="title" placeholder="Party Title" maxlength="64">
         </div>
         <div class="field">
             <label>Host</label>
@@ -62,8 +62,8 @@
             </div>
         </div>
         <div class="img-btn" >
-            <label>Picture</label>
-            <input type="file" name="image">
+            <label for="files" id="file-label">Picture  <span>(Max: 10MB)</span></label>
+            <input id="files" type="file" name="image">
         </div>
         <legend>Party Location</legend>
 

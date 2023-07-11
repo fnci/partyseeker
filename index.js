@@ -1,6 +1,5 @@
 import dotenv from 'dotenv';
-import 'dotenv/config';
-dotenv.config();
+dotenv.config({ path: '.env' });
 import express from "express";
 import bodyParser from "body-parser";
 import flash from "connect-flash";

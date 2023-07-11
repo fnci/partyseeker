@@ -2,11 +2,11 @@
     <h1><%- pageTitle %></h1>
     <form class="default-form edit-group" method="POST">
         <div class="field">
-            <label>Name</label>
+            <label>Name<span>&#42;</span></label>
             <input type="text" name="name" placeholder="Group Name" maxlength="18" value="<%= group.name %>">
         </div>
         <div class="field description">
-            <label>Description</label>
+            <label>Description<span>&#42;</span></label>
             <div class="container-editor">
                 <input id="x" type="hidden" name="description"  value="<%= group.description %>">
                 <trix-editor input="x"></trix-editor>
@@ -28,6 +28,9 @@
         <div class="field">
             <label>Website</label>
             <input type="url" name="url" placeholder="Url"  value="<%= group.url %>">
+        </div>
+        <div class="fiel required-field">
+        <p><span>&#42;</span> Indicates a required field</p>
         </div>
         <div class="field send">
             <input class="btn btn-pink" type="submit" value="Save Changes">

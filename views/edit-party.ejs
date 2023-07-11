@@ -3,8 +3,8 @@
     <form class="default-form edit-party" method="POST">
         <legend>About the party</legend>
         <div class="field">
-            <label>Title</label>
-            <input type="text" name="title" placeholder="Party Title" maxlength="32" value="<%= party.title %>">
+            <label>Title<span>&#42;</span></label>
+            <input type="text" name="title" placeholder="Party Title" maxlength="64" value="<%= party.title %>">
         </div>
         <div class="field">
             <label>Host</label>
@@ -42,11 +42,11 @@
         </div>
         <div class="columns-2 grid">
             <div class="field">
-                <label>Date</label>
+                <label>Date<span>&#42;</span></label>
                 <input type="date" name="date" placeholder="Party date" value="<%- party.date %>">
             </div>
             <div class="field">
-                <label>Hour</label>
+                <label>Hour<span>&#42;</span></label>
                 <input type="time" name="hour" placeholder="Party time" value="<%= party.hour %>">
             </div>
         </div>
@@ -55,7 +55,7 @@
             <input type="number" min="1" name="attendance" placeholder="Maximum guests allowed" value="<%= party.attendance %>">
         </div>
         <div class="field description">
-            <label>Description</label>
+            <label>Description<span>&#42;</span></label>
             <div class="container-editor">
                 <input type="hidden" id="x" name="description" value="<%= party.description %>">
                 <trix-editor input="x"></trix-editor>
@@ -76,26 +76,28 @@
 
         <p class="information">Confirm that the following fields are correct:</p>
         <div class="field">
-            <label>Address</label>
+            <label>Address<span>&#42;</span></label>
             <input type="text" id="address" name="address" placeholder="Address" value="<%= party.address %>">
         </div>
         <div class="field">
-            <label>City</label>
+            <label>City<span>&#42;</span></label>
             <input type="text" id="city" name="city" placeholder="City" value="<%= party.city %>">
         </div>
         <div class="field">
-            <label>State</label>
+            <label>State<span>&#42;</span></label>
             <input type="text" id="state" name="state" placeholder="State" value="<%= party.state %>">
         </div>
         <div class="field">
-            <label>Country</label>
+            <label>Country<span>&#42;</span></label>
             <input type="text" id="country" name="country" placeholder="Country" value="<%= party.country %>">
         </div>
 
             <input type="hidden" readonly="readonly" id="lat" name="lat" value="<%= party.location.coordinates[0] %>">
 
             <input type="hidden" readonly="readonly" id="lng" name="lng" value="<%= party.location.coordinates[1] %>">
-
+        <div class="fiel required-field">
+        <p><span>&#42;</span> Indicates a required field</p>
+        </div>
         <div class="field send">
             <input type="submit" class="btn btn-green" value="Save Changes">
         </div>

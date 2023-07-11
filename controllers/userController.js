@@ -45,7 +45,7 @@ const createNewAccount = async (req, res) => {
 const confirmAccount = async (req, res, next) => {
     // Verify user's account
     const user = await Users.findOne({ where: { email: req.params.email}})
-    console.log(`User Info: ${req.params.email}`);
+    /* console.log(`User Info: ${req.params.email}`); */
     // If not verified, redirect
     if(!user) {
         req.flash('error', 'User not found');
@@ -131,7 +131,7 @@ const profilePhotoForm = async(req, res) => {
     });
 }
 const multerConfig = {
-    limits: { fileSize: 10000000 },
+    limits: { fileSize: 1048576 }, // 10MB
     storage: multer.diskStorage({
         destination: (req, file, next) => {
             next(null, __dirname + '/../public/uploads/profiles/')

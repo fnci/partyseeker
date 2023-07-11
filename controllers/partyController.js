@@ -9,7 +9,7 @@ import { fileURLToPath } from 'url';
 const __dirname = dirname(fileURLToPath(import.meta.url));
 
 const multerConfig = {
-    limits: { fileSize: 10000000 },
+    limits: { fileSize: 1048576 }, // 10MB
     storage: multer.diskStorage({
         destination: (req, file, next) => {
             next(null, __dirname + '/../public/uploads/parties/');
@@ -68,7 +68,7 @@ const createParty = async (req, res) => {
     // Assign user
     party.userId = req.user.id;
     // Party image
-    party.image = req.file?.filename;
+    party.image = req.file.filename;
     // Store location with point
     const point = {
         type: 'Point',

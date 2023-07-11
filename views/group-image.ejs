@@ -3,8 +3,8 @@
     <form class="default-form edit-picture" method="POST" enctype="multipart/form-data">
 
         <div class="field send-btn">
-            <label>Picture</label>
-            <input type="file" name="image">
+            <label for="files" id="file-label">Picture  <span>(Max: 10MB)</span></label>
+            <input id="files" type="file" name="image">
         </div>
         <% if(group.image){ %>
         <div class="field">

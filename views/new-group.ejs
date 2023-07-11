@@ -2,11 +2,11 @@
     <h1><%- pageTitle %></h1>
     <form action="/new-group" class="default-form new-group" method="POST" enctype="multipart/form-data">
         <div class="field">
-            <label>Name</label>
+            <label>Name<span>&#42;</span></label>
             <input type="text" name="name" placeholder="Group Name" maxlength="18">
         </div>
         <div class="field description">
-            <label>Description</label>
+            <label>Description<span>&#42;</span></label>
             <div class="container-editor">
                 <input id="x" type="hidden" name="description">
                 <trix-editor input="x"></trix-editor>
@@ -26,12 +26,15 @@
             </select>
         </div>
         <div class="img-btn">
-            <label>Picture</label>
-            <input type="file" name="image">
+            <label for="files" id="file-label">Picture  <span>(Max: 10MB)</span></label>
+            <input id="files" type="file" name="image">
         </div>
         <div class="field">
             <label>Website</label>
             <input type="url" name="url" placeholder="Url">
+        </div>
+        <div class="fiel required-field">
+        <p><span>&#42;</span> Indicates a required field</p>
         </div>
         <div class="field send">
             <input class="btn btn-pink" type="submit" value="New Group">
