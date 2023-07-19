@@ -51,12 +51,27 @@ app.use(cookieParser());
 
 // Create Session
 app.use(session({
-    secret: process.env.SECRET,
+    secret: process.env.CK_SECRET,
     key: process.env.KEY,
     resave: false,
     saveUninitialized: false
-}))
-
+}));
+const sessionConfig = {
+    name: "Authenticookie",
+    secret: process.env.CK_SECRET,
+    resave: false,
+    saveUninitialized: true,
+    cookie: {
+        // By default, the httpOnly attribute is set.
+        httpOnly: true,
+        // The expires option should not be set directly; instead only use the maxAge option
+        //  If both expires and maxAge are set in the options, then the last one defined in the object is what is used.
+        expires: Date.now() + 1000 * 60 * 60 * 24 * 7,
+        maxAge: 1000 * 60 * 60 * 24 * 7,
+        // Force the session identifier cookie to be set on every response.
+    }
+}
+app.use(session(sessionConfig));
 // Init passport
 app.use(passport.initialize());
 app.use(passport.session());

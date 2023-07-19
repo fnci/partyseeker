@@ -68,7 +68,7 @@ const createParty = async (req, res) => {
     // Assign user
     party.userId = req.user.id;
     // Party image
-    party.image = req.file.filename;
+    party.image = req.file?.filename;
     // Store location with point
     const point = {
         type: 'Point',

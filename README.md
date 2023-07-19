@@ -1,8 +1,9 @@
-# Partyseeker 
+# Partyseeker
 > <sup> (2 min read) </sup>
 
 **Partyseeker** is a website inspired by the Meetup social networking platform but focused on creating and sharing parties/celebrations/gatherings.
-Like the eponymous title, this space is where party-making and sharing are ahead of the in-app experience. 🧬🥳🎈
+
+Like the eponymous title, this space is where party-making and sharing are ahead of the in-app experience. 🥳🎈
 
 Composed of the central home view, we can search for the specific name of a party; or by city, country, or category.
 Along with this section, we can search for matches by categories with their corresponding photographs. 📱
@@ -22,7 +23,7 @@ The Main section, made for the party administration, allows you to edit the info
 
 Then, in the navigation, you can add your personal information (name, biography, website) and a profile picture. 🧑‍🚀
 
-The profile section collects the user's information to share with their parties and groups in the user's profile view. 
+The profile section collects the user's information to share with their parties and groups in the user's profile view.
 There is also an area where you can change your password using the same method for account confirmation, checked via email. 📧
 
 The attractive and cheerful design makes up the site in a colorful way from start to finish. 🐲🌈

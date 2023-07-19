@@ -4,8 +4,8 @@ import deleteComment from './deleteComment.js';
 
 // Get data from db
 const geoApiKey = process.env.GEOAPIFY_API_KEY;
-const lat = document.querySelector('#lat').value || 37.770679;
-const lng = document.querySelector('#lng').value || -122.47059;
+const lat = document.querySelector('#lat')?.value || 37.770679;
+const lng = document.querySelector('#lng')?.value || -122.47059;
 const address = document.querySelector('#address').value || '';
 // add to leaflet
 const map = L.map('map').setView([lat, lng], 17)
