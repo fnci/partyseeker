@@ -566,6 +566,16 @@ box-shadow: 0px 0px 54px 1px rgba(254,255,219,1);
 .from-now {
     font-weight: 500;
 }
+.date-group {
+    font-size: 0.8rem;
+    font-weight: 700;
+    margin: 0.5rem auto 0rem auto;
+}
+.from-now-group {
+    font-size: 1rem;
+    font-weight: 500;
+    margin: 0;
+}
 .card img {
     border-radius: 0.45rem 0.45rem 0rem 0rem;
     aspect-ratio: 3/2;
@@ -731,7 +741,7 @@ form textarea{
 /** Categories **/
 main.categories {
     background-color: #ff18ba30;
-    padding: 1rem 0;
+    padding: 1rem 0.5rem;
     margin-top: 3rem;
 }
 /* Logo Header */
@@ -751,7 +761,7 @@ a.header-logo {
 }
 .list-categories p {
     text-align:center;
-    font-size: 1rem;
+    font-size: 1.8rem;
     font-weight: 700;
     margin: 1rem;
     display: block;
@@ -1193,6 +1203,7 @@ trix-toolbar .trix-button--icon-strike {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    margin: 0 1rem;
 }
 .assistants .title a {
     color: #068D9D;
@@ -1246,16 +1257,18 @@ trix-toolbar .trix-button--icon-strike {
 .comment {
     display: flex;
     align-items: flex-start;
-    margin-bottom: 2rem;
+    margin-bottom: 1rem;
+}
+.comment:last-of-type {
+    margin-bottom: 2.5rem;
 }
 .comment .comment-image img{
-    /* flex: 0 0 80px; */
-    margin-right: 1rem;
+    margin: 0 1rem 0 0;
     width: 6rem;
     height: 6rem;
     border-radius: 50%;
     object-fit: cover;
-    /* filter: drop-shadow(0 0 0.25rem rgba(0, 0, 0, 0.734)); */
+    filter: drop-shadow(0 0 0.25rem rgb(255, 255, 255));
     /* background-color: #31d000; */
 }
 .comment .text {
@@ -1272,11 +1285,20 @@ trix-toolbar .trix-button--icon-strike {
 .comment .text p {
     margin: 0;
 }
+@media (min-width: 768px) {
+    .comment .comment-image img{
+        width: 7rem;
+        height: 7rem;
+    }
+}
 /* User Profile Info */
 
 .user-info,
 .group-info {
     margin-top:0;
+}
+.group-info .text h1{
+    margin-top: 0;
 }
 
 .group-info h3 {
@@ -1381,7 +1403,7 @@ trix-toolbar .trix-button--icon-strike {
 }
 .parties-list li{
     flex: 0 0 calc(50% - 1rem);
-    margin-bottom: 2rem;
+    /* margin-bottom: 2rem; */
     text-align: center;
 }
 .parties-list li .text{
@@ -1392,12 +1414,11 @@ trix-toolbar .trix-button--icon-strike {
 }
 .parties-list .text a h3{
     font-size: 1.8rem;
-    margin: 0.5rem auto auto auto;
+    margin: 0.5rem auto 1rem auto;
 }
 @media (max-width: 768px) {
     .parties-list .text a h3{
         font-size: 1rem;
-        margin: 0 auto;
     }
 }
 
@@ -1413,6 +1434,7 @@ trix-toolbar .trix-button--icon-strike {
 }
 .groups-list .image img{
     aspect-ratio: 3/2;
+    filter: drop-shadow(0 0 0.25rem rgb(255, 255, 255));
 }
 .groups-list h3{
     margin: 0 auto;
@@ -1428,6 +1450,7 @@ trix-toolbar .trix-button--icon-strike {
 }
 .parties-list .image img{
     aspect-ratio: 3/2;
+    filter: drop-shadow(0 0 0.25rem rgb(255, 255, 255));
 }
 /* Sidebar */
 .party-content aside {
@@ -1575,9 +1598,10 @@ trix-toolbar {
 } */
 div .description h1{
     font-size: 2rem;
+    margin: 0 auto 0.5rem auto;
 }
 .description .text{
-        margin: 1rem auto 1rem auto;
+        margin: 1rem 0.5rem;
         line-height: 1.4;
         font-size: 1.2rem;
         font-weight: 400;
@@ -1621,6 +1645,9 @@ div .description h1{
 }
 .comments .no-comments-msg {
     text-align: center;
+}
+.comments h2 {
+    margin: 0.5rem auto 1rem auto;
 }
 
 .attendance-question .sign-in-to-confirm {

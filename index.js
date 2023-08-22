@@ -88,7 +88,6 @@ app.use((req, res, next) => {
     next();
 });
 
-
 // Routing
 app.use('/', router());
 

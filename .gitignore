@@ -4,9 +4,6 @@
 uploads
 uploads/
 public/uploads/
-public/uploads/groups/*
-public/uploads/parties/*
-public/uploads/profiles/*
 
 # does not ignore the README.md file
 !README.md
